@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
@@ -8,10 +9,27 @@ public class PlanchetteController : MonoBehaviour, IPointerClickHandler
 
     private bool _IsDragging;
 
+    public Action OnDragging;
+
     public void OnPointerClick(PointerEventData eventData)
     {
         Debug.Log("Planchette clicked!"); // Log the click event
         _IsDragging = !_IsDragging; // Toggle dragging state
+        if (_IsDragging)
+        {
+            Debug.Log("Planchette is now being dragged.");
+            OnDragging?.Invoke();
+        }
+        else
+        {
+            Debug.Log("Planchette is no longer being dragged.");
+        }
+    }
+
+    public void DisableDragging()
+    {
+        _IsDragging = false; // Disable dragging
+        Debug.Log("Dragging disabled.");
     }
 
     void Awake()
