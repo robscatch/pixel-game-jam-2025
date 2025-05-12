@@ -1,15 +1,18 @@
 using System;
-using TrickOrTreatSim;
 using UnityEngine;
 
 public class GameManager : Manager<GameManager>
 {
     public bool IsGamePaused { get; internal set; }
 
+    public AudioClip TitleTheme;
+    public AudioClip mainTheme;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        SoundManager.Instance.PlayTheme(TitleTheme); // Play the title theme music
+
     }
 
     // Update is called once per frame
@@ -19,6 +22,7 @@ public class GameManager : Manager<GameManager>
     
     public void InitGame()
     {
+        SoundManager.Instance.PlayTheme(mainTheme); // Play the main theme music
         Debug.Log("Game Initialized"); // Log the game initialization
     }
 

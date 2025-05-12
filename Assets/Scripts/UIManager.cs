@@ -1,4 +1,3 @@
-using TrickOrTreatSim;
 using UnityEngine;
 using UnityEngine.UIElements;
 using UnityEngine.InputSystem;
