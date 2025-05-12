@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class GameManager : Manager<GameManager>
@@ -8,11 +9,29 @@ public class GameManager : Manager<GameManager>
     public AudioClip TitleTheme;
     public AudioClip mainTheme;
 
+    public GameObject[] SystemPrefabs; // Array of system prefabs to be instantiated
+
+    private List<GameObject> _instancedSystemPrefabs;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+
+        _instancedSystemPrefabs = new List<GameObject>();
+        InstantiateSystemPrefabs();
+
         SoundManager.Instance.PlayTheme(TitleTheme); // Play the title theme music
 
+    }
+
+    private void InstantiateSystemPrefabs()
+    {
+        GameObject prefabInstance;
+        for (int i = 0; i < SystemPrefabs.Length; ++i)
+        {
+            prefabInstance = Instantiate(SystemPrefabs[i]);
+            _instancedSystemPrefabs.Add(prefabInstance);
+        }
     }
 
     // Update is called once per frame
