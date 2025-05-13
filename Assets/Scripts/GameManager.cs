@@ -8,6 +8,7 @@ public class GameManager : Manager<GameManager>
     public AudioClip TitleTheme;
     public AudioClip mainTheme;
 
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
