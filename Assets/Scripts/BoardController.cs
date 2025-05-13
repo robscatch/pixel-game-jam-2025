@@ -17,8 +17,7 @@ public class BoardController : MonoBehaviour
 
 
     [SerializeField]
-    private BoardStats _boardStats_SO;
-    private BoardStats BoardStatsInstance;
+    private BoardStats _boardStats;
 
     [SerializeField]
     private bool IsHaunted = false;
@@ -33,12 +32,11 @@ public class BoardController : MonoBehaviour
             _letterPositions.Add(letterObject.name, letterObject);
         }
 
-        BoardStatsInstance = Instantiate(_boardStats_SO);
 
         _planchetteController.OnDragging += MovePlanchette;
 
         // Check if the board is haunted
-        IsHaunted = BoardStatsInstance.DoesBoardControlPlanchette || BoardStatsInstance.DoesBoardControlCandle;
+        IsHaunted = _boardStats.DoesBoardControlPlanchette || _boardStats.DoesBoardControlCandle;
 
     }
 
@@ -46,8 +44,8 @@ public class BoardController : MonoBehaviour
     private void MovePlanchette()
     {
         Debug.Log("Planchette is being dragged!");
-        Debug.Log("boardis haunted: " + BoardStatsInstance.DoesBoardControlPlanchette);
-        if (BoardStatsInstance.DoesBoardControlPlanchette)
+        Debug.Log("boardis haunted: " + _boardStats.DoesBoardControlPlanchette);
+        if (_boardStats.DoesBoardControlPlanchette)
         {
             Debug.Log("Board is haunted! Moving planchette randomly.");
             // Randomly move the planchette to a letter position
