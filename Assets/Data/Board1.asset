@@ -12,6 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a531f0c348001540bd20e55ffd3f4f9, type: 3}
   m_Name: Board1
   m_EditorClassIdentifier: 
-  DoesBoardControlPlanchette: 1
-  DoesBoardControlCandle: 1
-  ChanceToBlowOutCandle: 10
+  TimeToBlowOutCandleInSeconds: 10

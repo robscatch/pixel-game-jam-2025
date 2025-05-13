@@ -13,6 +13,7 @@ public class GameManager : Manager<GameManager>
     void Start()
     {
         SoundManager.Instance.PlayTheme(TitleTheme); // Play the title theme music
+        Time.timeScale = 0; // Stop the game time
 
     }
 
@@ -25,6 +26,7 @@ public class GameManager : Manager<GameManager>
     {
         SoundManager.Instance.PlayTheme(mainTheme); // Play the main theme music
         Debug.Log("Game Initialized"); // Log the game initialization
+        Time.timeScale = 1; // Resume the game time
     }
 
     internal void ResumeGame()

@@ -33,28 +33,18 @@ public class BoardController : MonoBehaviour
         }
 
 
-        _planchetteController.OnDragging += MovePlanchette;
-
-        // Check if the board is haunted
-        IsHaunted = _boardStats.DoesBoardControlPlanchette || _boardStats.DoesBoardControlCandle;
-
+        _planchetteController.StartAutoMovement += MovePlanchette;
     }
 
 
     private void MovePlanchette()
     {
-        Debug.Log("Planchette is being dragged!");
-        Debug.Log("boardis haunted: " + _boardStats.DoesBoardControlPlanchette);
-        if (_boardStats.DoesBoardControlPlanchette)
-        {
-            Debug.Log("Board is haunted! Moving planchette randomly.");
-            // Randomly move the planchette to a letter position
-            int randomIndex = Random.Range(0, _letterPositions.Count);
-            string randomLetter = new List<string>(_letterPositions.Keys)[randomIndex];
-            Transform targetPosition = _letterPositions[randomLetter];
-            
-            _planchetteController.SetNewPosition(targetPosition.position);
-        }
+        // Randomly move the planchette to a letter position
+        int randomIndex = Random.Range(0, _letterPositions.Count);
+        string randomLetter = new List<string>(_letterPositions.Keys)[randomIndex];
+        Transform targetPosition = _letterPositions[randomLetter];
+
+        _planchetteController.SetNewPosition(targetPosition.position);
     }
 
 }

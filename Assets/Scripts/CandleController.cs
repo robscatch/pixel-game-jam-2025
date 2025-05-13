@@ -12,6 +12,8 @@ public class CandleController : MonoBehaviour, IPointerClickHandler
     [SerializeField]
     private BoardStats _boardStats; // Reference to the BoardStats scriptable object
 
+    private CountDownTimer _countDownTimer; // Reference to the countdown timer
+
     public void OnPointerClick(PointerEventData eventData)
     {
         ToggleCandle(); // Call the method to light the candle when clicked
@@ -20,16 +22,28 @@ public class CandleController : MonoBehaviour, IPointerClickHandler
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        _countDownTimer = GetComponent<CountDownTimer>(); // Get the CountDownTimer component attached to this GameObject
+        if (_countDownTimer == null)
+        {
+            Debug.LogError("CountDownTimer not found in the scene.");
+        }
+
+        _countDownTimer.duration = _boardStats.TimeToBlowOutCandleInSeconds; // Set the countdown timer duration
+        _countDownTimer.Finished += BlowOutCandle; // Subscribe to the Finished event of the countdown timer
         flame.SetActive(false); // Start with the flame inactive
     }
 
-    public bool isLit()
+    private void BlowOutCandle()
     {
-        return isFlameOn; // Return the current state of the flame
-    }
+        if (isFlameOn)
+        {
+            flame.SetActive(false); // Turn off the flame
+            isFlameOn = false;
+            _countDownTimer.Stop(); // Stop the countdown timer
+        }
+    } 
 
-
-    public void ToggleCandle()
+    private void ToggleCandle()
     {
         if (isFlameOn)
         {
@@ -40,22 +54,7 @@ public class CandleController : MonoBehaviour, IPointerClickHandler
         {
             flame.SetActive(true); // Turn on the flame
             isFlameOn = true;
-        }
-    }
-    void Update()
-    {
-        //check this only once a second
-        if (Time.frameCount % 60 == 0)
-        {
-            if (isLit() && _boardStats.DoesBoardControlCandle)
-            {
-                //Randomly blow out the candle
-                if (Random.Range(0, 100) < _boardStats.ChanceToBlowOutCandle)
-                {
-                    Debug.Log("Candle blown out!");
-                    ToggleCandle();
-                }
-            }
+            _countDownTimer.Begin();
         }
     }
 }
