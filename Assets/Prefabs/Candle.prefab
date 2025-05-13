@@ -103,6 +103,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   flame: {fileID: 4743813176554655898}
+  _boardStats: {fileID: 11400000, guid: a862bb377c859a84ca81cbeb82666fc4, type: 2}
 --- !u!61 &6028042821891040861
 BoxCollider2D:
   m_ObjectHideFlags: 0
