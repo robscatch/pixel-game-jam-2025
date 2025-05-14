@@ -14,6 +14,8 @@ public class CandleController : MonoBehaviour, IPointerClickHandler
 
     private CountDownTimer _countDownTimer; // Reference to the countdown timer
 
+    public bool IsFlameOn { get => isFlameOn; }
+
     public void OnPointerClick(PointerEventData eventData)
     {
         ToggleCandle(); // Call the method to light the candle when clicked
@@ -35,7 +37,7 @@ public class CandleController : MonoBehaviour, IPointerClickHandler
 
     private void BlowOutCandle()
     {
-        if (isFlameOn)
+        if (IsFlameOn)
         {
             flame.SetActive(false); // Turn off the flame
             isFlameOn = false;
@@ -45,7 +47,7 @@ public class CandleController : MonoBehaviour, IPointerClickHandler
 
     private void ToggleCandle()
     {
-        if (isFlameOn)
+        if (IsFlameOn)
         {
             flame.SetActive(false); // Turn off the flame
             isFlameOn = false;

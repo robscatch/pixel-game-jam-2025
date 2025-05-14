@@ -3,24 +3,28 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SnapController : MonoBehaviour
+public class CrystalSlotController : MonoBehaviour
 {
 
-    private struct Slot
-    {
-        public Transform transform; // The transform of the slot
-        public bool isOccupied; // Whether the slot is occupied or not
-    }
-
-    [SerializeField]
-    private List<Transform> snapPositions; // List of snap positions
     [SerializeField]
     private List<Draggable> Draggables; // List of objects to snap
 
     [SerializeField]
     private float snapRange = 0.5f; // Distance within which to snap
 
-    private List<Slot> slots;
+
+    [SerializeField]
+    private GameObject slotprefab;
+
+
+    private List<Slot> slots = new List<Slot>();
+
+    [SerializeField]
+    private BoardStats boardStats; // Reference to the BoardStats scriptable object
+
+
+    [SerializeField]
+    private CandleController candleController; // Reference to the CandleController script
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -31,12 +35,16 @@ public class SnapController : MonoBehaviour
             draggable.DragStarted += OnDragStarted; // Subscribe to the DragStarted event
         }
 
-        slots = new List<Slot>(); // Initialize the slots list
-
-        foreach (var snapPosition in snapPositions)
+        //Create Slots
+        for (int i = 0; i < boardStats.CrystalTypes.Count; i++)
         {
-            slots.Add(new Slot { transform = snapPosition, isOccupied = false }); // Initialize slots
+            var slot = Instantiate(slotprefab, transform).GetComponent<Slot>();
+
+            slot.crystalType = boardStats.CrystalTypes[i];
+            slot.isOccupied = false; // Mark the slot as unoccupied
+            slots.Add(slot); // Add the slot to the list
         }
+
 
     }
 
@@ -50,6 +58,7 @@ public class SnapController : MonoBehaviour
             {
                 Debug.Log("Slot is being unoccupied " + slot.transform.name);
                 slot.isOccupied = false; // Mark the slot as unoccupied
+                slot.SetColorDefault();
                 slots[i] = slot; // Update the slot in the list
                 break;
             }
@@ -63,12 +72,32 @@ public class SnapController : MonoBehaviour
             var slot = slots[i];
             if (!slot.isOccupied && Vector3.Distance(transform.position, slot.transform.position) < snapRange)
             {
+                var crystal = transform.GetComponent<CrystalController>().CrystalType;
+                if (candleController.IsFlameOn)
+                {
+                    VerifyCrystals(crystal, slot);
+                }
+
                 Debug.Log("Snapping to slot: " + slot.transform.name);
                 transform.position = slot.transform.position; // Snap to the position
                 slot.isOccupied = true;
                 slots[i] = slot; // Update the slot in the list
                 break;
             }
+        }
+    }
+
+    private static void VerifyCrystals(CrystalType crystal, Slot slot)
+    {
+        //Check crystal type
+        if (slot.crystalType != crystal)
+        {
+            Debug.Log("Wrong crystal type: " + slot.crystalType + " != " + crystal);
+            slot.SetCollerWrong(); // Set the color to red
+        }
+        else
+        {
+            slot.SetColorSuccess(); // Set the color to green
         }
     }
 }

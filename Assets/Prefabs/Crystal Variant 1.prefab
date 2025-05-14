@@ -24,6 +24,10 @@ PrefabInstance:
       propertyPath: m_SpriteTilingProperty.oldSize.y
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4617484327088638960, guid: 7a1c190877814e641ac4b127fb3be427, type: 3}
+      propertyPath: crystalType
+      value: 
+      objectReference: {fileID: 11400000, guid: 3d2836beca71f7c41ac6111a34f003ab, type: 2}
     - target: {fileID: 4981130350518425086, guid: 7a1c190877814e641ac4b127fb3be427, type: 3}
       propertyPath: m_Sprite
       value: 

@@ -13,3 +13,7 @@ MonoBehaviour:
   m_Name: Board1
   m_EditorClassIdentifier: 
   TimeToBlowOutCandleInSeconds: 10
+  CrystalTypes:
+  - {fileID: 11400000, guid: 3d2836beca71f7c41ac6111a34f003ab, type: 2}
+  - {fileID: 11400000, guid: 1428d31030f1cdf4a9e423e8ea2524db, type: 2}
+  - {fileID: 11400000, guid: b8298d5cc470eef4cadac8df402e44a1, type: 2}
