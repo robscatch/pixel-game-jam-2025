@@ -357,7 +357,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _crystalSlotController: {fileID: 1544906904}
-  _planchetteController: {fileID: 948533544}
 --- !u!1 &857662710
 GameObject:
   m_ObjectHideFlags: 0
@@ -404,17 +403,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TitleTheme: {fileID: 8300000, guid: dd678ca960d5fa348ac40601c38ba9ab, type: 3}
   mainTheme: {fileID: 8300000, guid: dd678ca960d5fa348ac40601c38ba9ab, type: 3}
---- !u!114 &948533544 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8601365805818254876, guid: 152fdf39f67d52c4fa6b488c009ffad3, type: 3}
-  m_PrefabInstance: {fileID: 387844042045610234}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 18063b428d3b5944b831001d65c481c9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1170816076
 GameObject:
   m_ObjectHideFlags: 0
@@ -826,7 +814,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: a862bb377c859a84ca81cbeb82666fc4, type: 2}
   _candleController: {fileID: 1748358177}
   _crystalSlotController: {fileID: 1544906904}
-  _planchetteController: {fileID: 948533544}
+  _planchetteController: {fileID: 8601365805818254876, guid: 152fdf39f67d52c4fa6b488c009ffad3, type: 3}
 --- !u!4 &1603402924
 Transform:
   m_ObjectHideFlags: 0
@@ -1028,63 +1016,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb0cd4b73c74c67429e721065d475efd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1001 &387844042045610234
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 4396554713359555301, guid: 152fdf39f67d52c4fa6b488c009ffad3, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0.41289997
-      objectReference: {fileID: 0}
-    - target: {fileID: 4396554713359555301, guid: 152fdf39f67d52c4fa6b488c009ffad3, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -0.11280012
-      objectReference: {fileID: 0}
-    - target: {fileID: 4396554713359555301, guid: 152fdf39f67d52c4fa6b488c009ffad3, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4396554713359555301, guid: 152fdf39f67d52c4fa6b488c009ffad3, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4396554713359555301, guid: 152fdf39f67d52c4fa6b488c009ffad3, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4396554713359555301, guid: 152fdf39f67d52c4fa6b488c009ffad3, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4396554713359555301, guid: 152fdf39f67d52c4fa6b488c009ffad3, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4396554713359555301, guid: 152fdf39f67d52c4fa6b488c009ffad3, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4396554713359555301, guid: 152fdf39f67d52c4fa6b488c009ffad3, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4396554713359555301, guid: 152fdf39f67d52c4fa6b488c009ffad3, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7458106737864264427, guid: 152fdf39f67d52c4fa6b488c009ffad3, type: 3}
-      propertyPath: m_Name
-      value: 'planchette '
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 152fdf39f67d52c4fa6b488c009ffad3, type: 3}
 --- !u!1001 &951069649096796297
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1385,7 +1316,6 @@ SceneRoots:
   - {fileID: 850854156}
   - {fileID: 1709298853}
   - {fileID: 2720866684290319693}
-  - {fileID: 387844042045610234}
   - {fileID: 392376676}
   - {fileID: 951069649096796297}
   - {fileID: 3833007664301280510}

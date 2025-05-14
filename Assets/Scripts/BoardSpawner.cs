@@ -24,7 +24,7 @@ public class BoardSpawner : Manager<BoardSpawner>
 
     private BoardController _boardController; // Reference to the BoardController script
     private BoardStats boardStatsInstance;
-
+    private PlanchetteController planchetteControllerInstance;
 
 
     public void SpawnBoard()
@@ -36,8 +36,9 @@ public class BoardSpawner : Manager<BoardSpawner>
         //Get Random board stats
         int randomStatsIndex = Random.Range(0, _boardStats.Count);
         boardStatsInstance = Instantiate(_boardStats[randomStatsIndex]); // Get the random board stats
-        
-        _boardController.PlanchetteController = _planchetteController; 
+        planchetteControllerInstance = Instantiate(_planchetteController, _boardController.transform); // Instantiate the planchette controller prefab
+
+        _boardController.PlanchetteController = planchetteControllerInstance; 
         _boardController.CandleController = _candleController; // Set the CandleController in the BoardController
 
         _crystalSlotController.SetBoardStats(boardStatsInstance); // Set the board stats in the CrystalSlotController
@@ -50,5 +51,24 @@ public class BoardSpawner : Manager<BoardSpawner>
     {
         yield return new WaitForSeconds(1f); // Wait for 1 second before starting the board
         _boardController.StartBoard(); // Start the board
+    }
+
+    public void DestroyBoard()
+    {
+        if (_boardController != null)
+        {
+            Destroy(_boardController.gameObject); // Destroy the board game object
+            _boardController = null; // Set the reference to null
+        }
+        if (boardStatsInstance != null)
+        {
+            Destroy(boardStatsInstance); // Destroy the board stats game object
+            boardStatsInstance = null; // Set the reference to null
+        }
+        if (planchetteControllerInstance != null)
+        {
+            Destroy(planchetteControllerInstance.gameObject); // Destroy the planchette game object
+            planchetteControllerInstance = null; // Set the reference to null
+        }
     }
 }

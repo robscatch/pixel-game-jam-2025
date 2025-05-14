@@ -107,6 +107,17 @@ public class CrystalSlotController : BoardStatsUser
 
     public override void OnBoardStatsSet()
     {
+        if (slots.Count > 0)
+        {
+            // Clear existing slots
+            foreach (var slot in slots)
+            {
+                Destroy(slot.gameObject); // Destroy the existing slot GameObjects
+            }
+        }
+
+        slots.Clear(); // Clear the list of slots
+
         //Create Slots
         for (int i = 0; i < boardStats.CrystalTypes.Count; i++)
         {

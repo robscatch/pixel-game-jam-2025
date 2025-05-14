@@ -59,6 +59,7 @@ public class CandleController : BoardStatsUser, IPointerClickHandler
 
     public override void OnBoardStatsSet()
     {
+        BlowOutCandle(); // Call the method to blow out the candle
         _countDownTimer.duration = boardStats.TimeToBlowOutCandleInSeconds; // Set the countdown timer duration
     }
 }
