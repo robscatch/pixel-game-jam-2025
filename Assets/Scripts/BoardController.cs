@@ -15,12 +15,9 @@ public class BoardController : MonoBehaviour
     [SerializeField]
     private CandleController _candleController;
 
+    public PlanchetteController PlanchetteController { get => _planchetteController; set => _planchetteController = value; }
+    public CandleController CandleController { get => _candleController; set => _candleController = value; }
 
-    [SerializeField]
-    private BoardStats _boardStats;
-
-    [SerializeField]
-    private bool IsHaunted = false;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -32,13 +29,13 @@ public class BoardController : MonoBehaviour
             _letterPositions.Add(letterObject.name, letterObject);
         }
 
-
-        _planchetteController.StartAutoMovement += MovePlanchette;
-
-        MovePlanchette();
-
     }
 
+    public void StartBoard()
+    {
+        PlanchetteController.StartAutoMovement += MovePlanchette;
+        MovePlanchette();
+    }
 
     private void MovePlanchette()
     {
@@ -47,7 +44,6 @@ public class BoardController : MonoBehaviour
         string randomLetter = new List<string>(_letterPositions.Keys)[randomIndex];
         Transform targetPosition = _letterPositions[randomLetter];
 
-        _planchetteController.SetNewPosition(targetPosition.position);
+        PlanchetteController.SetNewPosition(targetPosition.position);
     }
-
 }

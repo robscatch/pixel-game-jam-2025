@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CrystalSlotController : MonoBehaviour
+public class CrystalSlotController : BoardStatsUser
 {
 
     [SerializeField]
@@ -19,9 +19,6 @@ public class CrystalSlotController : MonoBehaviour
 
     private List<Slot> slots = new List<Slot>();
 
-    [SerializeField]
-    private BoardStats boardStats; // Reference to the BoardStats scriptable object
-
 
     [SerializeField]
     private CandleController candleController; // Reference to the CandleController script
@@ -34,19 +31,8 @@ public class CrystalSlotController : MonoBehaviour
             draggable.DragEnded += OnDragEnded; // Subscribe to the DragEnded event
             draggable.DragStarted += OnDragStarted; // Subscribe to the DragStarted event
         }
-
-        //Create Slots
-        for (int i = 0; i < boardStats.CrystalTypes.Count; i++)
-        {
-            var slot = Instantiate(slotprefab, transform).GetComponent<Slot>();
-
-            slot.crystalType = boardStats.CrystalTypes[i];
-            slot.isOccupied = false; // Mark the slot as unoccupied
-            slots.Add(slot); // Add the slot to the list
-        }
-
-
     }
+    
 
     public bool AllCorrect()
     {
@@ -116,6 +102,19 @@ public class CrystalSlotController : MonoBehaviour
         else
         {
             slot.SetColorSuccess(); // Set the color to green
+        }
+    }
+
+    public override void OnBoardStatsSet()
+    {
+        //Create Slots
+        for (int i = 0; i < boardStats.CrystalTypes.Count; i++)
+        {
+            var slot = Instantiate(slotprefab, transform).GetComponent<Slot>();
+
+            slot.crystalType = boardStats.CrystalTypes[i];
+            slot.isOccupied = false; // Mark the slot as unoccupied
+            slots.Add(slot); // Add the slot to the list
         }
     }
 }

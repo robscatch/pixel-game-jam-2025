@@ -27,6 +27,8 @@ public class GameManager : Manager<GameManager>
         SoundManager.Instance.PlayTheme(mainTheme); // Play the main theme music
         Debug.Log("Game Initialized"); // Log the game initialization
         Time.timeScale = 1; // Resume the game time
+
+        BoardSpawner.Instance.SpawnBoard(); // Spawn the game board
     }
 
     internal void ResumeGame()

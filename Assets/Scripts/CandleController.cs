@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class CandleController : MonoBehaviour, IPointerClickHandler
+public class CandleController : BoardStatsUser, IPointerClickHandler
 {
 
     [SerializeField]
@@ -9,8 +9,6 @@ public class CandleController : MonoBehaviour, IPointerClickHandler
 
     private bool isFlameOn = false; // Flag to check if the flame is on or off
 
-    [SerializeField]
-    private BoardStats _boardStats; // Reference to the BoardStats scriptable object
 
     private CountDownTimer _countDownTimer; // Reference to the countdown timer
 
@@ -30,7 +28,6 @@ public class CandleController : MonoBehaviour, IPointerClickHandler
             Debug.LogError("CountDownTimer not found in the scene.");
         }
 
-        _countDownTimer.duration = _boardStats.TimeToBlowOutCandleInSeconds; // Set the countdown timer duration
         _countDownTimer.Finished += BlowOutCandle; // Subscribe to the Finished event of the countdown timer
         flame.SetActive(false); // Start with the flame inactive
     }
@@ -58,5 +55,10 @@ public class CandleController : MonoBehaviour, IPointerClickHandler
             isFlameOn = true;
             _countDownTimer.Begin();
         }
+    }
+
+    public override void OnBoardStatsSet()
+    {
+        _countDownTimer.duration = boardStats.TimeToBlowOutCandleInSeconds; // Set the countdown timer duration
     }
 }

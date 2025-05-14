@@ -114,7 +114,7 @@ Transform:
   m_GameObject: {fileID: 2409163158329890601}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.45420027, y: 0.13080001, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 2.0640285, y: 1.0086842, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -193,10 +193,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 898a4be4d01b43a4caf295e57d3f76aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  boardStats: {fileID: 0}
   _planchetteController: {fileID: 0}
   _candleController: {fileID: 0}
-  _boardStats: {fileID: 11400000, guid: a862bb377c859a84ca81cbeb82666fc4, type: 2}
-  IsHaunted: 0
 --- !u!1 &2906214264109541797
 GameObject:
   m_ObjectHideFlags: 0
