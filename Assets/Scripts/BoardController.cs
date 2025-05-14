@@ -34,6 +34,9 @@ public class BoardController : MonoBehaviour
 
 
         _planchetteController.StartAutoMovement += MovePlanchette;
+
+        MovePlanchette();
+
     }
 
 

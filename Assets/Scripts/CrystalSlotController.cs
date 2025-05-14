@@ -48,6 +48,24 @@ public class CrystalSlotController : MonoBehaviour
 
     }
 
+    public bool AllCorrect()
+    {
+        if (!candleController.IsFlameOn)
+        {
+            return false;
+        }
+
+        // Check if all slots are occupied and have the correct crystal type
+        foreach (var slot in slots)
+        {
+           if (! slot.isCorrect)
+            {
+                return false; // Return false if any slot is incorrect
+            }
+        }
+        return true;
+    }
+
     private void OnDragStarted(Transform transform)
     {
         //Detect if slot is being unoccupied

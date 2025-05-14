@@ -26,7 +26,6 @@ public class PlanchetteController : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        StartAutoMovement?.Invoke();
         draggable = GetComponent<Draggable>();
         draggable.DraggingStateChanged += OnDraggingStateChanged;
     }
@@ -39,8 +38,13 @@ public class PlanchetteController : MonoBehaviour
         }
         else
         {
-            StopCoroutine(moveCoroutine); // Stop the auto movement when dragging starts
+            StopMovement();
         }
+    }
+
+    public void StopMovement()
+    {
+        StopCoroutine(moveCoroutine); // Stop the auto movement
     }
 
     public void SetNewPosition(Vector3 position)
