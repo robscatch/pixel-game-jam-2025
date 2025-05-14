@@ -4,11 +4,8 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 
-public class PlanchetteController : MonoBehaviour, IPointerClickHandler
+public class PlanchetteController : MonoBehaviour 
 {
-    Camera m_Camera;
-
-    private bool _IsDragging;
     private Coroutine moveCoroutine;
 
     public Action StartAutoMovement;
@@ -17,20 +14,7 @@ public class PlanchetteController : MonoBehaviour, IPointerClickHandler
     private int numPositions = 0;
     private const int maxPositions = 5; // Maximum number of positions to move to
 
-    public void OnPointerClick(PointerEventData eventData)
-    {
-        Debug.Log("Planchette clicked!"); // Log the click event
-        _IsDragging = !_IsDragging; // Toggle dragging state
-        if (_IsDragging)
-        {
-            Debug.Log("Planchette is now being dragged.");
-        }
-        else
-        {
-            Debug.Log("Planchette is no longer being dragged.");
-            StartCoroutine(WaitAndInvoke(1f));
-        }
-    }
+    private Draggable draggable;
 
     IEnumerator WaitAndInvoke(float waitTime)
     {
@@ -38,15 +22,25 @@ public class PlanchetteController : MonoBehaviour, IPointerClickHandler
         StartAutoMovement?.Invoke();
     }
 
-    void Awake()
-    {
-        m_Camera = Camera.main;
-    }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         StartAutoMovement?.Invoke();
+        draggable = GetComponent<Draggable>();
+        draggable.DraggingStateChanged += OnDraggingStateChanged;
+    }
+
+    private void OnDraggingStateChanged(bool isDragging)
+    {
+        if (!isDragging)
+        {
+            StartCoroutine(WaitAndInvoke(1f));
+        }
+        else
+        {
+            StopCoroutine(moveCoroutine); // Stop the auto movement when dragging starts
+        }
     }
 
     public void SetNewPosition(Vector3 position)
@@ -87,15 +81,4 @@ public class PlanchetteController : MonoBehaviour, IPointerClickHandler
 
     }
 
-    void Update()
-    {
-        if (_IsDragging)
-        {
-            StopCoroutine(moveCoroutine); // Stop any ongoing movement
-            Vector3 mousePos = Mouse.current.position.ReadValue();
-            Vector3 worldPos = m_Camera.ScreenToWorldPoint(new Vector3(mousePos.x, mousePos.y, m_Camera.nearClipPlane));
-            transform.position = new Vector3(worldPos.x, worldPos.y, transform.position.z);
-        }
-
-    }
 }
