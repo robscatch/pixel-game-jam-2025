@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BoardSpawner : Manager<BoardSpawner>
+public class BoardSpawner : MonoBehaviour 
 {
     [SerializeField]
     private List<GameObject> _boardPrefabs; // List of board prefabs to spawn

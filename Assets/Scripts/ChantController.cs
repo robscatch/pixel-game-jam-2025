@@ -13,7 +13,7 @@ public class ChantController : MonoBehaviour, IPointerClickHandler
         {
             Debug.Log("All crystals are correct!"); // Log message when all crystals are correct
             SoundManager.Instance.PlaySingle(null);
-            BoardSpawner.Instance.DestroyBoard(); // Clear the game board
+            GameManager.Instance.DestroyBoard(); // Clear the game board
             StartCoroutine(WaitBeforeSpawning()); // Wait before spawning a new board
         }
         else
@@ -26,6 +26,6 @@ public class ChantController : MonoBehaviour, IPointerClickHandler
     IEnumerator WaitBeforeSpawning() 
     {
         yield return new WaitForSeconds(1f); // Wait for 1 second
-        BoardSpawner.Instance.SpawnBoard(); // Spawn the game board again
+        GameManager.Instance.SpawnBoard(); // Spawn the game board again
     }
 }

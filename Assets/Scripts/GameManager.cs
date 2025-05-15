@@ -8,6 +8,13 @@ public class GameManager : Manager<GameManager>
     public AudioClip TitleTheme;
     public AudioClip mainTheme;
 
+    CountDownTimer deathTimer;
+
+    [SerializeField]
+    private BoardSpawner _boardSpawner;
+
+    public int numBoardsCleared = 0; // Number of boards cleared by the player
+
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -22,13 +29,33 @@ public class GameManager : Manager<GameManager>
     {
     }
     
+    public void DestroyBoard()
+    {
+        _boardSpawner.DestroyBoard(); // Destroy the game board
+        numBoardsCleared++;
+    }
+
+
+    public void SpawnBoard()
+    {
+        _boardSpawner.SpawnBoard(); // Spawn the game board
+    }
+
+
+    public void PlayerPendingDeath()
+    {
+        Debug.Log("Player is pending death"); // Log the player death action
+        
+
+    }
+    
     public void InitGame()
     {
         SoundManager.Instance.PlayTheme(mainTheme); // Play the main theme music
         Debug.Log("Game Initialized"); // Log the game initialization
         Time.timeScale = 1; // Resume the game time
 
-        BoardSpawner.Instance.SpawnBoard(); // Spawn the game board
+        _boardSpawner.SpawnBoard(); // Spawn the game board
     }
 
     internal void ResumeGame()
