@@ -401,7 +401,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c068a9d4ba3ab474c9914a81166e3945, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TitleTheme: {fileID: 8300000, guid: dd678ca960d5fa348ac40601c38ba9ab, type: 3}
+  TitleTheme: {fileID: 8300000, guid: c9fe7f2b017e55d449674c4f6af93c56, type: 3}
   mainTheme: {fileID: 8300000, guid: dd678ca960d5fa348ac40601c38ba9ab, type: 3}
   _boardSpawner: {fileID: 1603402923}
   numBoardsCleared: 0
