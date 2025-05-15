@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.IO;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
@@ -10,9 +11,13 @@ public class PlanchetteController : MonoBehaviour
 
     public Action StartAutoMovement;
 
+    public float planchetteIncreaseAmount = 0.2f; // Amount to increase the planchette speed
+
     private float planchetteSpeed = 1f; // Speed of the planchette movement
     private int numPositions = 0;
     private const int maxPositions = 5; // Maximum number of positions to move to
+
+    private const float PLANCHEETE_MAX_SPEED = 0.1f;
 
     private Draggable draggable;
 
@@ -49,11 +54,18 @@ public class PlanchetteController : MonoBehaviour
 
     public void SetNewPosition(Vector3 position)
     {
-        if (numPositions > maxPositions && planchetteSpeed > .1)
+        if (numPositions > maxPositions && planchetteSpeed > PLANCHEETE_MAX_SPEED)
         {
-            planchetteSpeed -= 0.1f; // Increase speed every 10 positions
+            planchetteSpeed -= planchetteIncreaseAmount; // Increase speed every 10 positions
             numPositions = 0; // Reset the position count
             Debug.Log("Planchette speed increased to: " + planchetteSpeed);
+        }
+
+        if (planchetteSpeed <= PLANCHEETE_MAX_SPEED)
+        {
+            planchetteSpeed = 0.1f;
+            numPositions = 0; // Reset the position count
+            GameManager.Instance.PlayerPendingDeath(); // Notify the game manager about player death
         }
 
         numPositions++;

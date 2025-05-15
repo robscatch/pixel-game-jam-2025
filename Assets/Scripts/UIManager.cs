@@ -10,6 +10,7 @@ public class UIManager : Manager<UIManager>
     private VisualElement root; // Reference to the root VisualElement of the UI
     private VisualElement TitleScreen;
     private VisualElement PauseMenu;
+    private VisualElement GameOverPanel;
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -20,6 +21,10 @@ public class UIManager : Manager<UIManager>
 
         PauseMenu = root.Q<VisualElement>("PauseMenu"); // Find the PauseMenu VisualElement by name
         PauseMenu.style.display = DisplayStyle.None; // Initially hide the PauseMenu
+
+        GameOverPanel = root.Q<VisualElement>("GameOverPanel"); // Find the GameOverPanel VisualElement by name
+        GameOverPanel.style.display = DisplayStyle.None; // Initially hide the GameOverPanel
+
 
         //after the animation is done, hide the TitleScreen
         TitleScreen.RegisterCallback<TransitionEndEvent>(e =>
@@ -49,6 +54,14 @@ public class UIManager : Manager<UIManager>
         {
             GameManager.Instance.QuitGame(); // Call the QuitGame method from the GameManager when the button is clicked
         });
+    }
+
+
+    public void GameOver(string message)
+    {
+        GameOverPanel.style.display = DisplayStyle.Flex; // Show the GameOverPanel
+        var gameOverText = GameOverPanel.Q<Label>("GameOverText"); // Find the GameOverText Label in the GameOverPanel
+        gameOverText.text = message; // Set the text of the GameOverText Label to the provided message
     }
 
     private void ResumeGame()

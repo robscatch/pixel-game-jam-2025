@@ -8,7 +8,11 @@ public class GameManager : Manager<GameManager>
     public AudioClip TitleTheme;
     public AudioClip mainTheme;
 
+    [SerializeField]
     CountDownTimer deathTimer;
+
+    [SerializeField]
+    CountDownTimer ShiftTimer;
 
     [SerializeField]
     private BoardSpawner _boardSpawner;
@@ -21,7 +25,9 @@ public class GameManager : Manager<GameManager>
     {
         SoundManager.Instance.PlayTheme(TitleTheme); // Play the title theme music
         Time.timeScale = 0; // Stop the game time
-
+        deathTimer.Finished += PlayerDied;
+        ShiftTimer.Finished += PlayerWins; // Subscribe to the ShiftTimer finished event
+        ShiftTimer.Begin(); // Start the shift timer
     }
 
     // Update is called once per frame
@@ -45,10 +51,31 @@ public class GameManager : Manager<GameManager>
     public void PlayerPendingDeath()
     {
         Debug.Log("Player is pending death"); // Log the player death action
-        
-
+        deathTimer.Begin();
     }
-    
+
+    public void PlayerDied()
+    {
+       Debug.Log("Game Over"); // Log the game over action
+        Time.timeScale = 0; // Stop the game time
+        UIManager.Instance.GameOver($"You have died!\n You clensed {numBoardsCleared}."); // Show the game over UI
+        StopAllTimers();
+    }
+
+    private void StopAllTimers()
+    {
+        deathTimer.Stop(); // Stop the death timer
+        ShiftTimer.Stop(); // Stop the shift timer
+    }
+
+    public void PlayerWins()
+    {
+        Debug.Log("Player Wins"); // Log the player win action
+        Time.timeScale = 0; // Stop the game time
+        UIManager.Instance.GameOver($"You survived your shift!\n You clensed {numBoardsCleared}."); // Show the game over UI
+        StopAllTimers();
+    }
+
     public void InitGame()
     {
         SoundManager.Instance.PlayTheme(mainTheme); // Play the main theme music
