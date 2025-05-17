@@ -759,9 +759,21 @@ PrefabInstance:
       value: GameManager
       objectReference: {fileID: 0}
     - target: {fileID: 4902296000327455673, guid: 8d23ba772745af041a8274e40b6f2522, type: 3}
+      propertyPath: MainTheme
+      value: 
+      objectReference: {fileID: 8300000, guid: 5913be4dc1ddbd94c9af2fcca7de80f7, type: 3}
+    - target: {fileID: 4902296000327455673, guid: 8d23ba772745af041a8274e40b6f2522, type: 3}
+      propertyPath: mainTheme
+      value: 
+      objectReference: {fileID: 8300000, guid: 9a346ab1584d4724c93313227b04b8a0, type: 3}
+    - target: {fileID: 4902296000327455673, guid: 8d23ba772745af041a8274e40b6f2522, type: 3}
       propertyPath: ShiftTimer
       value: 
       objectReference: {fileID: 857662714}
+    - target: {fileID: 4902296000327455673, guid: 8d23ba772745af041a8274e40b6f2522, type: 3}
+      propertyPath: TitleTheme
+      value: 
+      objectReference: {fileID: 8300000, guid: c9fe7f2b017e55d449674c4f6af93c56, type: 3}
     - target: {fileID: 4902296000327455673, guid: 8d23ba772745af041a8274e40b6f2522, type: 3}
       propertyPath: deathTimer
       value: 
@@ -770,6 +782,30 @@ PrefabInstance:
       propertyPath: _boardSpawner
       value: 
       objectReference: {fileID: 1603402923}
+    - target: {fileID: 4902296000327455673, guid: 8d23ba772745af041a8274e40b6f2522, type: 3}
+      propertyPath: playerDeadTheme
+      value: 
+      objectReference: {fileID: 8300000, guid: 7bf77d77f8cf9194982f77f3c28201f4, type: 3}
+    - target: {fileID: 4902296000327455673, guid: 8d23ba772745af041a8274e40b6f2522, type: 3}
+      propertyPath: gamePlayThemes.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4902296000327455673, guid: 8d23ba772745af041a8274e40b6f2522, type: 3}
+      propertyPath: 'gamePlayThemes.Array.data[0]'
+      value: 
+      objectReference: {fileID: 8300000, guid: 71cae2f3e4da9334ead7654367c8752d, type: 3}
+    - target: {fileID: 4902296000327455673, guid: 8d23ba772745af041a8274e40b6f2522, type: 3}
+      propertyPath: 'gamePlayThemes.Array.data[1]'
+      value: 
+      objectReference: {fileID: 8300000, guid: 8f46ae5dc36b7294ca0744881a1cdde0, type: 3}
+    - target: {fileID: 4902296000327455673, guid: 8d23ba772745af041a8274e40b6f2522, type: 3}
+      propertyPath: 'gamePlayThemes.Array.data[2]'
+      value: 
+      objectReference: {fileID: 8300000, guid: 11bc4161b7d278446811c274b6250de1, type: 3}
+    - target: {fileID: 4902296000327455673, guid: 8d23ba772745af041a8274e40b6f2522, type: 3}
+      propertyPath: 'gamePlayThemes.Array.data[3]'
+      value: 
+      objectReference: {fileID: 8300000, guid: 5efb6bc0ef3268b4c8aa92aa9df4892f, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -830,6 +866,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Candle
       objectReference: {fileID: 0}
+    - target: {fileID: 7864329341505577657, guid: 454f2fb7e0295334395a09d40055c289, type: 3}
+      propertyPath: LightCandleSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 400718c4f13b73f4eaf99622a9baa0fb, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1292,6 +1332,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: CrystalSlots
       objectReference: {fileID: 0}
+    - target: {fileID: 8519898207472842595, guid: 722f9cfd072465f43929f8981e848c29, type: 3}
+      propertyPath: WrongSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 1786c0a39b2905a46b34e9033123133d, type: 3}
+    - target: {fileID: 8519898207472842595, guid: 722f9cfd072465f43929f8981e848c29, type: 3}
+      propertyPath: CorrectSound
+      value: 
+      objectReference: {fileID: 8300000, guid: dfbc37e99fcfc2e44b84fad34f9a5707, type: 3}
     - target: {fileID: 8519898207472842595, guid: 722f9cfd072465f43929f8981e848c29, type: 3}
       propertyPath: candleController
       value: 

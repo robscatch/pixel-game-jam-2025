@@ -49,7 +49,7 @@ public class BoardSpawner : MonoBehaviour
 
     IEnumerator StartBoard()
     {
-        yield return new WaitForSeconds(1f); // Wait for 1 second before starting the board
+        yield return new WaitForSeconds(2f); // Wait for 1 second before starting the board
         _boardController.StartBoard(); // Start the board
     }
 

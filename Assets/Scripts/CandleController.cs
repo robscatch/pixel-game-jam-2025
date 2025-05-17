@@ -4,6 +4,12 @@ using UnityEngine.EventSystems;
 public class CandleController : BoardStatsUser, IPointerClickHandler
 {
 
+    [SerializeField]
+    private AudioClip LightCandleSound;
+
+    [SerializeField]
+    private AudioClip BlowOutCandleSound;
+
     private bool isFlameOn = false; // Flag to check if the flame is on or off
 
     private CountDownTimer _countDownTimer; // Reference to the countdown timer
@@ -34,6 +40,7 @@ public class CandleController : BoardStatsUser, IPointerClickHandler
     {
         if (IsFlameOn)
         {
+            SoundManager.Instance.PlaySingle(BlowOutCandleSound);
             _animator.SetTrigger("BlowOut"); // Trigger the blow out animation
             isFlameOn = false;
             _countDownTimer.Stop(); // Stop the countdown timer
@@ -44,11 +51,13 @@ public class CandleController : BoardStatsUser, IPointerClickHandler
     {
         if (IsFlameOn)
         {
+            SoundManager.Instance.PlaySingle(BlowOutCandleSound);
             _animator.SetTrigger("BlowOut"); // Trigger the blow out animation
             isFlameOn = false;
         }
         else
         {
+            SoundManager.Instance.PlaySingle(LightCandleSound);
             _animator.SetTrigger("Light"); // Trigger the light animation
             isFlameOn = true;
             _countDownTimer.Begin();

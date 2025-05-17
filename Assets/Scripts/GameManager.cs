@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using System.Collections.Generic;
 
 public class GameManager : Manager<GameManager>
 {
@@ -7,7 +8,11 @@ public class GameManager : Manager<GameManager>
     public int NumBoardsCleared { get => numBoardsCleared; set => numBoardsCleared = value; }
 
     public AudioClip TitleTheme;
-    public AudioClip mainTheme;
+
+    public AudioClip playerDeadTheme;
+    public AudioClip MainTheme;
+
+    private int currentThemeIndex = 0;
 
     [SerializeField]
     CountDownTimer deathTimer;
@@ -57,6 +62,7 @@ public class GameManager : Manager<GameManager>
 
     public void SpawnBoard()
     {
+        SoundManager.Instance.PlayTheme(MainTheme);
         _boardSpawner.SpawnBoard(); // Spawn the game board
     }
 
@@ -69,7 +75,8 @@ public class GameManager : Manager<GameManager>
 
     public void PlayerDied()
     {
-       Debug.Log("Game Over"); // Log the game over action
+        Debug.Log("Game Over"); // Log the game over action
+        SoundManager.Instance.PlayTheme(playerDeadTheme);
         GameManager.Instance.DestroyBoard(); // Clear the game board
         playerIsDead = true; // Set the player dead flag to true
         Time.timeScale = 0; // Stop the game time
@@ -96,7 +103,7 @@ public class GameManager : Manager<GameManager>
     public void InitGame()
     {
         playerIsDead = false; // Reset the player dead flag
-        SoundManager.Instance.PlayTheme(mainTheme); // Play the main theme music
+        SoundManager.Instance.PlayTheme(MainTheme); // Play the main theme music
         Debug.Log("Game Initialized"); // Log the game initialization
         Time.timeScale = 1; // Resume the game time
 

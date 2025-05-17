@@ -6,11 +6,15 @@ using UnityEngine.EventSystems;
 public class ChantController : MonoBehaviour, IPointerClickHandler
 {
     [SerializeField]
+    private AudioClip GulpSound;
+
+    [SerializeField]
     private CrystalSlotController _crystalSlotController; // Reference to the CrystalSlotController script
     public void OnPointerClick(PointerEventData eventData)
     {
         if (_crystalSlotController.AllCorrect())
         {
+            SoundManager.Instance.PlaySingle(GulpSound);
             Debug.Log("All crystals are correct!"); // Log message when all crystals are correct
             SoundManager.Instance.PlaySingle(null);
             GameManager.Instance.DestroyBoard(); // Clear the game board

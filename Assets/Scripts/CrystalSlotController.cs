@@ -5,6 +5,11 @@ using UnityEngine;
 
 public class CrystalSlotController : BoardStatsUser
 {
+    [SerializeField]
+    private AudioClip CorrectSound;
+
+    [SerializeField]
+    private AudioClip WrongSound;
 
     [SerializeField]
     private List<Draggable> Draggables; // List of objects to snap
@@ -91,16 +96,18 @@ public class CrystalSlotController : BoardStatsUser
         }
     }
 
-    private static void VerifyCrystals(CrystalType crystal, Slot slot)
+    private void VerifyCrystals(CrystalType crystal, Slot slot)
     {
         //Check crystal type
         if (slot.crystalType != crystal)
         {
             Debug.Log("Wrong crystal type: " + slot.crystalType + " != " + crystal);
+            SoundManager.Instance.PlaySingle(WrongSound);
             slot.SetCollerWrong(); // Set the color to red
         }
         else
         {
+            SoundManager.Instance.PlaySingle(CorrectSound);
             slot.SetColorSuccess(); // Set the color to green
         }
     }

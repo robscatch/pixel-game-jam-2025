@@ -14,10 +14,8 @@ public class PlanchetteController : MonoBehaviour
     public float planchetteIncreaseAmount = 0.2f; // Amount to increase the planchette speed
 
     private float planchetteSpeed = 1f; // Speed of the planchette movement
-    private int numPositions = 0;
-    private const int maxPositions = 5; // Maximum number of positions to move to
+    private int numIncreases = 0;
 
-    private const float PLANCHEETE_MAX_SPEED = 0.1f;
 
     private Draggable draggable;
     private CountDownTimer countDownTimer;
@@ -60,15 +58,15 @@ public class PlanchetteController : MonoBehaviour
 
     void IncreasePlanchetteSpeed()
     {
-        if (!AtMaxSpeed && planchetteSpeed <= PLANCHEETE_MAX_SPEED)
+        if (!AtMaxSpeed && numIncreases >= 4)
         {
+            countDownTimer.Stop();
             AtMaxSpeed = true;
             planchetteSpeed = 0.1f;
-            numPositions = 0; // Reset the position count
-            GameManager.Instance.PlayerPendingDeath(); // Notify the game manager about player death
+            GameManager.Instance.PlayerDied(); // Notify the game manager about player death
             return;
         }
-
+        numIncreases++;
         planchetteSpeed -= planchetteIncreaseAmount; // Increase speed every 10 positions
         countDownTimer.Stop();
         countDownTimer.Begin();
