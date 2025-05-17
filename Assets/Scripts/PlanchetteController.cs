@@ -20,6 +20,9 @@ public class PlanchetteController : MonoBehaviour
     private const float PLANCHEETE_MAX_SPEED = 0.1f;
 
     private Draggable draggable;
+    private CountDownTimer countDownTimer;
+
+    private bool AtMaxSpeed = false;
 
     IEnumerator WaitAndInvoke(float waitTime)
     {
@@ -33,6 +36,9 @@ public class PlanchetteController : MonoBehaviour
     {
         draggable = GetComponent<Draggable>();
         draggable.DraggingStateChanged += OnDraggingStateChanged;
+        countDownTimer = GetComponent<CountDownTimer>();
+        countDownTimer.Begin();
+        countDownTimer.Finished += IncreasePlanchetteSpeed;
     }
 
     private void OnDraggingStateChanged(bool isDragging)
@@ -52,24 +58,24 @@ public class PlanchetteController : MonoBehaviour
         StopCoroutine(moveCoroutine); // Stop the auto movement
     }
 
-    public void SetNewPosition(Vector3 position)
+    void IncreasePlanchetteSpeed()
     {
-        if (numPositions > maxPositions && planchetteSpeed > PLANCHEETE_MAX_SPEED)
+        if (!AtMaxSpeed && planchetteSpeed <= PLANCHEETE_MAX_SPEED)
         {
-            planchetteSpeed -= planchetteIncreaseAmount; // Increase speed every 10 positions
-            numPositions = 0; // Reset the position count
-            Debug.Log("Planchette speed increased to: " + planchetteSpeed);
-        }
-
-        if (planchetteSpeed <= PLANCHEETE_MAX_SPEED)
-        {
+            AtMaxSpeed = true;
             planchetteSpeed = 0.1f;
             numPositions = 0; // Reset the position count
             GameManager.Instance.PlayerPendingDeath(); // Notify the game manager about player death
+            return;
         }
 
-        numPositions++;
+        planchetteSpeed -= planchetteIncreaseAmount; // Increase speed every 10 positions
+        countDownTimer.Stop();
+        countDownTimer.Begin();
+    }
 
+    public void SetNewPosition(Vector3 position)
+    {
         // Stop any ongoing movement
         if (moveCoroutine != null)
         {
