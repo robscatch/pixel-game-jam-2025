@@ -36,7 +36,7 @@ public class BoardSpawner : MonoBehaviour
         //Get Random board stats
         int randomStatsIndex = Random.Range(0, _boardStats.Count);
         boardStatsInstance = Instantiate(_boardStats[randomStatsIndex]); // Get the random board stats
-        planchetteControllerInstance = Instantiate(_planchetteController, _boardController.transform); // Instantiate the planchette controller prefab
+        planchetteControllerInstance = Instantiate(_planchetteController); // Instantiate the planchette controller prefab
 
         _boardController.PlanchetteController = planchetteControllerInstance; 
         _boardController.CandleController = _candleController; // Set the CandleController in the BoardController

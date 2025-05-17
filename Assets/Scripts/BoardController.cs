@@ -27,6 +27,7 @@ public class BoardController : MonoBehaviour
         {
             Debug.Log(letterObject.name);
             _letterPositions.Add(letterObject.name, letterObject);
+            letterObject.GetComponent<SpriteRenderer>().enabled = false; // Disable the sprite renderer for each letter object
         }
 
     }
