@@ -13,6 +13,10 @@ public class UIManager : Manager<UIManager>
     private VisualElement PauseMenu;
     private VisualElement GameOverPanel;
 
+    private VisualElement GameOverlayPanel;
+    private ProgressBar progressBar; // Reference to the ProgressBar component in the GameOverlayPanel
+    private Label scoreLabel;
+
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -25,6 +29,12 @@ public class UIManager : Manager<UIManager>
 
         GameOverPanel = root.Q<VisualElement>("GameOverPanel"); // Find the GameOverPanel VisualElement by name
         GameOverPanel.style.display = DisplayStyle.None; // Initially hide the GameOverPanel
+
+        GameOverlayPanel = root.Q<VisualElement>("GameOverlayPanel"); // Find the GameOverlayPanel VisualElement by name
+        progressBar = GameOverlayPanel.Q<ProgressBar>("ProgressBar"); // Find the ProgressBar in the GameOverlayPanel
+        scoreLabel = GameOverlayPanel.Q<Label>("ScoreLabel"); // Find the ScoreLabel in the GameOverlayPanel
+
+        GameOverlayPanel.style.display = DisplayStyle.None; // Initially hide the GameOverlayPanel
 
 
         //after the animation is done, hide the TitleScreen
@@ -39,9 +49,11 @@ public class UIManager : Manager<UIManager>
 
                     //Start the Game
                     GameManager.Instance.InitGame(); // Call the InitGame method from the GameManager
+                    GameOverlayPanel.style.display = DisplayStyle.Flex; // Show the GameOverlayPanel
                 }
             }
         });
+
 
         //TODO THis isnt working
         var SubTitleLabel = TitleScreen.Q<Label>("SubTitleLabel"); // Find the SubTitleLabel Label in the TitleScreen
@@ -49,7 +61,7 @@ public class UIManager : Manager<UIManager>
         {
             foreach (var styleProperty in e.stylePropertyNames)
             {
-                if (styleProperty == "opacity" && e.target == SubTitleLabel )
+                if (styleProperty == "opacity" && e.target == SubTitleLabel)
                 {
                     if (SubTitleLabel.resolvedStyle.opacity >= 100)
                     {
@@ -74,6 +86,7 @@ public class UIManager : Manager<UIManager>
                     GameOverPanel.style.display = DisplayStyle.None; // Hide the GameOverPanel after the animation is done
 
                     GameManager.Instance.InitGame();
+                    GameOverlayPanel.style.display = DisplayStyle.Flex; // Show the GameOverlayPanel
                 }
             }
         });
@@ -109,6 +122,23 @@ public class UIManager : Manager<UIManager>
         var gameOverText = GameOverPanel.Q<Label>("GameOverText"); // Find the GameOverText Label in the GameOverPanel
         gameOverText.text = message; // Set the text of the GameOverText Label to the provided message
     }
+    void UpdateProgressBar(float value)
+    {
+        if (progressBar == null)
+        {
+            return;
+        }
+        progressBar.value = value; // Update the value of the ProgressBar
+    }
+
+    void UpdateScoreLabel(int score)
+    {
+        if (scoreLabel == null)
+        {
+            return;
+        }
+        scoreLabel.text = $"Boards: {score}"; // Update the text of the ScoreLabel
+    }
 
     private void ResumeGame()
     {
@@ -143,6 +173,10 @@ public class UIManager : Manager<UIManager>
                 GameManager.Instance.PauseGame(); // Pause the game if it's running
             }
         }
+
+        UpdateProgressBar(GameManager.Instance.GetTimeRemaining() * 100.0f / GameManager.Instance.GetShiftDuration());
+
+        UpdateScoreLabel(GameManager.Instance.NumBoardsCleared); // Update the score label with the number of boards cleared
 
     }
 }

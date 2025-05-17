@@ -12,4 +12,8 @@
         <ui:Label text="You have died&#10;you cleanse 1 board" name="GameOverText" style="-unity-text-align: upper-center; color: rgb(255, 255, 255); font-size: 80%; -unity-font-definition: url(&quot;project://database/Assets/Fonts/PressStart2P-Regular.ttf?fileID=12800000&amp;guid=b284a6525342f44599e9ce79e37c2d61&amp;type=3#PressStart2P-Regular&quot;);" />
         <ui:Label text="Press &apos;space&apos; to restart" name="SubTitleLabel" style="-unity-font-definition: url(&quot;project://database/Assets/Fonts/PressStart2P-Regular.ttf?fileID=12800000&amp;guid=b284a6525342f44599e9ce79e37c2d61&amp;type=3#PressStart2P-Regular&quot;); color: rgb(255, 255, 255); font-size: 27px; transition-property: opacity; transition-timing-function: ease; transition-duration: 1s; opacity: 1;" />
     </ui:VisualElement>
+    <ui:VisualElement name="GameOverlayPanel" style="flex-grow: 1; justify-content: flex-end; bottom: 0; flex-shrink: 1; flex-basis: auto; flex-direction: column; position: absolute; right: 0; left: 0;">
+        <ui:Label text="Label" name="ScoreLabel" style="-unity-text-align: upper-right; -unity-font-definition: url(&quot;project://database/Assets/Fonts/PressStart2P-Regular.ttf?fileID=12800000&amp;guid=b284a6525342f44599e9ce79e37c2d61&amp;type=3#PressStart2P-Regular&quot;); color: rgb(255, 255, 255); font-size: 22px;" />
+        <ui:ProgressBar value="22" title="Shift Timer" name="ProgressBar" style="-unity-font-definition: url(&quot;project://database/Assets/Fonts/PressStart2P-Regular.ttf?fileID=12800000&amp;guid=b284a6525342f44599e9ce79e37c2d61&amp;type=3#PressStart2P-Regular&quot;);" />
+    </ui:VisualElement>
 </ui:UXML>

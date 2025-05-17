@@ -4,6 +4,7 @@ using UnityEngine;
 public class GameManager : Manager<GameManager>
 {
     public bool IsGamePaused { get; internal set; }
+    public int NumBoardsCleared { get => numBoardsCleared; set => numBoardsCleared = value; }
 
     public AudioClip TitleTheme;
     public AudioClip mainTheme;
@@ -19,7 +20,7 @@ public class GameManager : Manager<GameManager>
 
     public bool playerIsDead = false; // Flag to check if the player is dead
 
-    public int numBoardsCleared = 0; // Number of boards cleared by the player
+    private int numBoardsCleared = 0; // Number of boards cleared by the player
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -32,6 +33,16 @@ public class GameManager : Manager<GameManager>
         ShiftTimer.Begin(); // Start the shift timer
     }
 
+    public int GetTimeRemaining()
+    {
+        return ShiftTimer.timeRemaining; // Return the remaining time of the shift timer
+    }
+
+    public int GetShiftDuration()
+    {
+        return ShiftTimer.duration; // Return the duration of the shift timer
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -40,7 +51,7 @@ public class GameManager : Manager<GameManager>
     public void DestroyBoard()
     {
         _boardSpawner.DestroyBoard(); // Destroy the game board
-        numBoardsCleared++;
+        NumBoardsCleared++;
     }
 
 
@@ -62,7 +73,7 @@ public class GameManager : Manager<GameManager>
         GameManager.Instance.DestroyBoard(); // Clear the game board
         playerIsDead = true; // Set the player dead flag to true
         Time.timeScale = 0; // Stop the game time
-        UIManager.Instance.GameOver($"You have died!\n You clensed {numBoardsCleared} boards."); // Show the game over UI
+        UIManager.Instance.GameOver($"You have died!\n You clensed {NumBoardsCleared} boards."); // Show the game over UI
         StopAllTimers();
     }
 
@@ -78,7 +89,7 @@ public class GameManager : Manager<GameManager>
         GameManager.Instance.DestroyBoard(); // Clear the game board
         playerIsDead = true;
         Time.timeScale = 0; // Stop the game time
-        UIManager.Instance.GameOver($"You survived your shift!\n You clensed {numBoardsCleared} boards."); // Show the game over UI
+        UIManager.Instance.GameOver($"You survived your shift!\n You clensed {NumBoardsCleared} boards."); // Show the game over UI
         StopAllTimers();
     }
 
