@@ -4,13 +4,10 @@ using UnityEngine.EventSystems;
 public class CandleController : BoardStatsUser, IPointerClickHandler
 {
 
-    [SerializeField]
-    private GameObject flame; // Prefab for the candle
-
     private bool isFlameOn = false; // Flag to check if the flame is on or off
 
-
     private CountDownTimer _countDownTimer; // Reference to the countdown timer
+    private Animator _animator; // Reference to the animator component
 
     public bool IsFlameOn { get => isFlameOn; }
 
@@ -22,6 +19,8 @@ public class CandleController : BoardStatsUser, IPointerClickHandler
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+
+        _animator = GetComponent<Animator>(); // Get the Animator component attached to this GameObject
         _countDownTimer = GetComponent<CountDownTimer>(); // Get the CountDownTimer component attached to this GameObject
         if (_countDownTimer == null)
         {
@@ -29,14 +28,13 @@ public class CandleController : BoardStatsUser, IPointerClickHandler
         }
 
         _countDownTimer.Finished += BlowOutCandle; // Subscribe to the Finished event of the countdown timer
-        flame.SetActive(false); // Start with the flame inactive
     }
 
     private void BlowOutCandle()
     {
         if (IsFlameOn)
         {
-            flame.SetActive(false); // Turn off the flame
+            _animator.SetTrigger("BlowOut"); // Trigger the blow out animation
             isFlameOn = false;
             _countDownTimer.Stop(); // Stop the countdown timer
         }
@@ -46,12 +44,12 @@ public class CandleController : BoardStatsUser, IPointerClickHandler
     {
         if (IsFlameOn)
         {
-            flame.SetActive(false); // Turn off the flame
+            _animator.SetTrigger("BlowOut"); // Trigger the blow out animation
             isFlameOn = false;
         }
         else
         {
-            flame.SetActive(true); // Turn on the flame
+            _animator.SetTrigger("Light"); // Trigger the light animation
             isFlameOn = true;
             _countDownTimer.Begin();
         }
