@@ -1,13 +1,14 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
-    <ui:VisualElement name="PauseMenu" style="flex-grow: 1; justify-content: center; align-items: center;">
-        <ui:Button text="Resume" name="ResumeButton" style="width: 200px; height: 100px;" />
-        <ui:Button text="Quit" name="QuitButton" style="width: 200px; height: 100px;" />
-    </ui:VisualElement>
-    <ui:VisualElement name="TitleScreen" style="flex-grow: 1; position: absolute; top: 0; right: 0; bottom: 0; left: 0; justify-content: center; align-items: center; background-color: rgb(0, 0, 0); transition-property: opacity; transition-duration: 1s;">
-        <ui:Label text="GAME" name="TitleLabel" style="font-size: 100%; color: rgb(255, 255, 255); -unity-font-definition: url(&quot;project://database/Assets/UI%20Toolkit/UnityThemes/UnityDefaultRuntimeTheme.tss?fileID=2230732570650464555&amp;guid=2c193bd8e696fa24a9265f5d5f956826&amp;type=3#NotInter-Regular&quot;);" />
-        <ui:Label text="Press &apos;Space&apos; to start" name="SubTitleLabel" style="color: rgb(255, 255, 255); font-size: 37px;" />
-    </ui:VisualElement>
     <ui:VisualElement name="GameOverPanel" style="flex-grow: 1; position: absolute; top: 0; left: 0; right: 0; bottom: 0; -unity-background-image-tint-color: rgb(36, 36, 36); align-items: center; justify-content: center; background-color: rgb(51, 51, 51);">
-        <ui:Label text="Game over" name="GameOverText" style="-unity-text-align: upper-center; color: rgb(255, 255, 255); font-size: 100%;" />
+        <ui:Label text="Game over" name="GameOverText" style="-unity-text-align: upper-center; color: rgb(255, 255, 255); font-size: 100%; -unity-font-definition: url(&quot;project://database/Assets/Fonts/PressStart2P-Regular.ttf?fileID=12800000&amp;guid=b284a6525342f44599e9ce79e37c2d61&amp;type=3#PressStart2P-Regular&quot;);" />
+    </ui:VisualElement>
+    <ui:VisualElement name="TitleScreen" style="flex-grow: 1; position: absolute; top: 0; right: 0; bottom: 0; left: 0; justify-content: center; align-items: center; background-color: rgb(0, 0, 0); transition-property: opacity; transition-duration: 1s; -unity-font-definition: url(&quot;project://database/Assets/Fonts/PressStart2P-Regular.ttf?fileID=12800000&amp;guid=b284a6525342f44599e9ce79e37c2d61&amp;type=3#PressStart2P-Regular&quot;);">
+        <ui:VisualElement style="flex-grow: 1; position: absolute; top: 0; right: 0; left: 0; bottom: 0; background-image: url(&quot;project://database/Assets/Sprites/title.aseprite?fileID=2054396645512381474&amp;guid=dc03a6b7456c29f4aad5fae61631e8c7&amp;type=3#title&quot;); -unity-background-image-tint-color: rgb(63, 63, 63);" />
+        <ui:Label text="WEEGEE Cleanse" name="TitleLabel" style="font-size: 100%; color: rgb(255, 255, 255); -unity-font-definition: url(&quot;project://database/Assets/Fonts/PressStart2P-Regular.ttf?fileID=12800000&amp;guid=b284a6525342f44599e9ce79e37c2d61&amp;type=3#PressStart2P-Regular&quot;);" />
+        <ui:Label text="Press &apos;Space&apos; to start" name="SubTitleLabel" style="color: rgb(255, 255, 255); font-size: 37px; -unity-font-definition: url(&quot;project://database/Assets/Fonts/PressStart2P-Regular.ttf?fileID=12800000&amp;guid=b284a6525342f44599e9ce79e37c2d61&amp;type=3#PressStart2P-Regular&quot;);" />
+    </ui:VisualElement>
+    <ui:VisualElement name="PauseMenu" style="flex-grow: 1; justify-content: center; align-items: center;">
+        <ui:Button text="Resume" name="ResumeButton" style="width: 200px; height: 100px; -unity-font-definition: url(&quot;project://database/Assets/Fonts/PressStart2P-Regular.ttf?fileID=12800000&amp;guid=b284a6525342f44599e9ce79e37c2d61&amp;type=3#PressStart2P-Regular&quot;);" />
+        <ui:Button text="Quit" name="QuitButton" style="width: 200px; height: 100px; -unity-font-definition: url(&quot;project://database/Assets/Fonts/PressStart2P-Regular.ttf?fileID=12800000&amp;guid=b284a6525342f44599e9ce79e37c2d61&amp;type=3#PressStart2P-Regular&quot;);" />
     </ui:VisualElement>
 </ui:UXML>
