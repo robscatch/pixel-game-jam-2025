@@ -28,14 +28,14 @@ RectTransform:
   m_GameObject: {fileID: 4121430835124947110}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.2277, y: 0.2277, z: 0.2277}
+  m_LocalScale: {x: 1, y: 1, z: 0.2277}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.09261, y: 0.0912}
+  m_AnchoredPosition: {x: 0.07500005, y: 0.96099794}
   m_SizeDelta: {x: 1, y: 1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!212 &6749140872537936694
@@ -82,7 +82,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
+  m_Sprite: {fileID: 4707327427228117315, guid: e688c544349fa824ca346a1df9c6442b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -107,6 +107,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isOccupied: 0
   crystalType: {fileID: 0}
+  isCorrect: 0
 --- !u!114 &8380804423956335064
 MonoBehaviour:
   m_ObjectHideFlags: 0
