@@ -26,11 +26,6 @@ public class CrystalSlotController : BoardStatsUser
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        foreach (var draggable in Draggables)
-        {
-            draggable.DragEnded += OnDragEnded; // Subscribe to the DragEnded event
-            draggable.DragStarted += OnDragStarted; // Subscribe to the DragStarted event
-        }
     }
     
 
@@ -52,25 +47,13 @@ public class CrystalSlotController : BoardStatsUser
         return true;
     }
 
-    private void OnDragStarted(Transform transform)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        //Detect if slot is being unoccupied
-        for (int i = 0; i < slots.Count; i++) // Use a for loop instead of foreach
+        if (collision.gameObject.GetComponent<CrystalController>() == null)
         {
-            var slot = slots[i];
-            if (slot.isOccupied && slot.transform.position == transform.position)
-            {
-                Debug.Log("Slot is being unoccupied " + slot.transform.name);
-                slot.isOccupied = false; // Mark the slot as unoccupied
-                slot.SetColorDefault();
-                slots[i] = slot; // Update the slot in the list
-                break;
-            }
+            return;
         }
-    }
 
-    private void OnDragEnded(Transform transform)
-    {
         for (int i = 0; i < slots.Count; i++) // Use a for loop instead of foreach
         {
             var slot = slots[i];
@@ -89,9 +72,32 @@ public class CrystalSlotController : BoardStatsUser
                 break;
             }
         }
+
     }
 
-    private static void VerifyCrystals(CrystalType crystal, Slot slot)
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.gameObject.GetComponent<CrystalController>() == null)
+        {
+            return;
+        }
+
+        //Detect if slot is being unoccupied
+        for (int i = 0; i < slots.Count; i++) // Use a for loop instead of foreach
+        {
+            var slot = slots[i];
+            if (slot.isOccupied && slot.transform.position == transform.position)
+            {
+                Debug.Log("Slot is being unoccupied " + slot.transform.name);
+                slot.isOccupied = false; // Mark the slot as unoccupied
+                slot.SetColorDefault();
+                slots[i] = slot; // Update the slot in the list
+                break;
+            }
+        }
+    }
+    
+        private static void VerifyCrystals(CrystalType crystal, Slot slot)
     {
         //Check crystal type
         if (slot.crystalType != crystal)
