@@ -107,15 +107,6 @@ public class CrystalSlotController : BoardStatsUser
 
     public override void OnBoardStatsSet()
     {
-        //Move Draggales above the slots
-        foreach (var draggable in Draggables)
-        {
-            draggable.transform.position = new Vector3(
-                draggable.transform.position.x, 
-                draggable.transform.position.y + 0.3f, 
-                draggable.transform.position.z) ; // Move the draggable above the slots
-        }
-
 
         if (slots.Count > 0)
         {
@@ -137,5 +128,13 @@ public class CrystalSlotController : BoardStatsUser
             slot.isOccupied = false; // Mark the slot as unoccupied
             slots.Add(slot); // Add the slot to the list
         }
+
+        //Move Draggales above the slots
+        foreach (var draggable in Draggables)
+        {
+            draggable.ResetPosition(); // Reset the position of the draggable object
+        }
+
+
     }
 }

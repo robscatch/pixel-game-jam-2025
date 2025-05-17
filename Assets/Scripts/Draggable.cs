@@ -15,6 +15,8 @@ public class Draggable : MonoBehaviour, IPointerClickHandler
 
     public bool IsDragging { get => _IsDragging;  }
 
+    private Vector3 startposition;
+
     public void OnPointerClick(PointerEventData eventData)
     {
         _IsDragging = !_IsDragging; // Toggle dragging state
@@ -29,9 +31,16 @@ public class Draggable : MonoBehaviour, IPointerClickHandler
             DragStarted?.Invoke(transform); // Notify listeners that dragging has started
         }
     }
+
+    public void ResetPosition()
+    {
+        transform.position = startposition; // Reset the position of the object
+    }
+
     void Awake()
     {
         m_Camera = Camera.main;
+        startposition = transform.position;
     }
 
     // Update is called once per frame

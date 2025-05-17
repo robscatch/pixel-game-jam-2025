@@ -17,6 +17,8 @@ public class GameManager : Manager<GameManager>
     [SerializeField]
     private BoardSpawner _boardSpawner;
 
+    public bool playerIsDead = false; // Flag to check if the player is dead
+
     public int numBoardsCleared = 0; // Number of boards cleared by the player
 
 
@@ -57,8 +59,10 @@ public class GameManager : Manager<GameManager>
     public void PlayerDied()
     {
        Debug.Log("Game Over"); // Log the game over action
+        GameManager.Instance.DestroyBoard(); // Clear the game board
+        playerIsDead = true; // Set the player dead flag to true
         Time.timeScale = 0; // Stop the game time
-        UIManager.Instance.GameOver($"You have died!\n You clensed {numBoardsCleared}."); // Show the game over UI
+        UIManager.Instance.GameOver($"You have died!\n You clensed {numBoardsCleared} boards."); // Show the game over UI
         StopAllTimers();
     }
 
@@ -71,13 +75,16 @@ public class GameManager : Manager<GameManager>
     public void PlayerWins()
     {
         Debug.Log("Player Wins"); // Log the player win action
+        GameManager.Instance.DestroyBoard(); // Clear the game board
+        playerIsDead = true;
         Time.timeScale = 0; // Stop the game time
-        UIManager.Instance.GameOver($"You survived your shift!\n You clensed {numBoardsCleared}."); // Show the game over UI
+        UIManager.Instance.GameOver($"You survived your shift!\n You clensed {numBoardsCleared} boards."); // Show the game over UI
         StopAllTimers();
     }
 
     public void InitGame()
     {
+        playerIsDead = false; // Reset the player dead flag
         SoundManager.Instance.PlayTheme(mainTheme); // Play the main theme music
         Debug.Log("Game Initialized"); // Log the game initialization
         Time.timeScale = 1; // Resume the game time

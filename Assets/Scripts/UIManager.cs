@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UIElements;
 using UnityEngine.InputSystem;
+using System.Collections;
 
 public class UIManager : Manager<UIManager>
 {
@@ -31,7 +32,7 @@ public class UIManager : Manager<UIManager>
         {
             foreach (var styleProperty in e.stylePropertyNames)
             {
-                if (styleProperty == "opacity")
+                if (styleProperty == "opacity" && e.target == TitleScreen)
                 {
                     Debug.Log("Animation finished, hiding TitleScreen.");
                     TitleScreen.style.display = DisplayStyle.None; // Hide the TitleScreen after the animation is done
@@ -42,6 +43,40 @@ public class UIManager : Manager<UIManager>
             }
         });
 
+        //TODO THis isnt working
+        var SubTitleLabel = TitleScreen.Q<Label>("SubTitleLabel"); // Find the SubTitleLabel Label in the TitleScreen
+        SubTitleLabel.RegisterCallback<TransitionEndEvent>(e =>
+        {
+            foreach (var styleProperty in e.stylePropertyNames)
+            {
+                if (styleProperty == "opacity" && e.target == SubTitleLabel )
+                {
+                    if (SubTitleLabel.resolvedStyle.opacity >= 100)
+                    {
+                        SubTitleLabel.style.opacity = 50; // Set the opacity of the SubTitleLabel to 0 (invisible)
+                    }
+                    else if (SubTitleLabel.resolvedStyle.opacity <= 50)
+                    {
+                        SubTitleLabel.style.opacity = 100; // Set the opacity of the SubTitleLabel to 1 (visible)
+                    }
+                }
+            }
+        });
+
+
+        GameOverPanel.RegisterCallback<TransitionEndEvent>(e =>
+        {
+            foreach (var styleProperty in e.stylePropertyNames)
+            {
+                if (styleProperty == "opacity" && e.target == GameOverPanel)
+                {
+                    Debug.Log("Animation finished, hiding GameOverPanel.");
+                    GameOverPanel.style.display = DisplayStyle.None; // Hide the GameOverPanel after the animation is done
+
+                    GameManager.Instance.InitGame();
+                }
+            }
+        });
 
         var ResumeButton = PauseMenu.Q<Button>("ResumeButton"); // Find the ResumeButton in the PauseMenu
         ResumeButton.RegisterCallback<ClickEvent>(e =>
@@ -54,6 +89,17 @@ public class UIManager : Manager<UIManager>
         {
             GameManager.Instance.QuitGame(); // Call the QuitGame method from the GameManager when the button is clicked
         });
+
+
+        StartCoroutine(DelayedInit()); // Start the DelayedInit coroutine to initialize the UI after a delay
+    }
+
+    IEnumerator DelayedInit()
+    {
+        yield return new WaitForSeconds(0.5f); // Wait for 0.5 seconds before executing the next line
+        var SubTitleLabel = TitleScreen.Q<Label>("SubTitleLabel"); // Find the SubTitleLabel Label in the TitleScreen
+        SubTitleLabel.style.opacity = 0; // Set the opacity of the SubTitleLabel to 0 (invisible)
+
     }
 
 
@@ -76,6 +122,13 @@ public class UIManager : Manager<UIManager>
         if (Keyboard.current.spaceKey.wasPressedThisFrame && TitleScreen.style.display != DisplayStyle.None)
         {
             TitleScreen.style.opacity = 0; // Set the opacity of the TitleScreen to 0 (invisible)
+            return;
+        }
+
+        if (Keyboard.current.spaceKey.wasPressedThisFrame && GameOverPanel.style.display != DisplayStyle.None && GameManager.Instance.playerIsDead)
+        {
+            GameOverPanel.style.opacity = 0;// Hide the GameOverPanel
+            return;
         }
 
         if (Keyboard.current.escapeKey.wasPressedThisFrame)
