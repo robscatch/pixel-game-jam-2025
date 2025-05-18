@@ -19,6 +19,8 @@ public class UIManager : Manager<UIManager>
 
     private Label SubTitleLabel;
 
+    private VisualElement IntroPanel;
+
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -35,6 +37,9 @@ public class UIManager : Manager<UIManager>
         GameOverlayPanel = root.Q<VisualElement>("GameOverlayPanel"); // Find the GameOverlayPanel VisualElement by name
         progressBar = GameOverlayPanel.Q<ProgressBar>("ProgressBar"); // Find the ProgressBar in the GameOverlayPanel
         scoreLabel = GameOverlayPanel.Q<Label>("ScoreLabel"); // Find the ScoreLabel in the GameOverlayPanel
+
+
+        IntroPanel = root.Q<VisualElement>("IntroPanel"); // Find the IntroPanel VisualElement by name
 
         GameOverlayPanel.style.display = DisplayStyle.None; // Initially hide the GameOverlayPanel
 
@@ -88,6 +93,16 @@ public class UIManager : Manager<UIManager>
         });
 
 
+    }
+
+    public void DisplayIntroPanel()
+    {
+        IntroPanel.style.display = DisplayStyle.Flex; // Show the IntroPanel
+    }
+
+    public void HideIntroPanel()
+    {
+        IntroPanel.style.display = DisplayStyle.None; // Hide the IntroPanel
     }
 
     public void GameOver(string message)

@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 using System.Collections.Generic;
+using System.Collections;
 
 public class GameManager : Manager<GameManager>
 {
@@ -21,6 +22,9 @@ public class GameManager : Manager<GameManager>
     public bool playerIsDead = false; // Flag to check if the player is dead
 
     private int numBoardsCleared = 0; // Number of boards cleared by the player
+
+    private bool firstTime = true;
+
 
     [SerializeField]
     private GameObject vignettePrefab;
@@ -97,6 +101,14 @@ public class GameManager : Manager<GameManager>
 
     public void InitGame()
     {
+        if (firstTime)
+        {
+            UIManager.Instance.DisplayIntroPanel(); // Show the intro panel
+            firstTime = false; // Set first time to false
+            StartCoroutine(DelayInit()); // Start the game initialization after a delay
+            return;
+        }
+
         playerIsDead = false; // Reset the player dead flag
         SoundManager.Instance.PlayTheme(MainTheme); // Play the main theme music
         Debug.Log("Game Initialized"); // Log the game initialization
@@ -105,6 +117,13 @@ public class GameManager : Manager<GameManager>
 
         ShiftTimer.Begin(); // Start the shift timer
         _boardSpawner.SpawnBoard(); // Spawn the game board
+    }
+
+    IEnumerator DelayInit()
+    {
+        yield return new WaitForSeconds(7f); // Wait for 1 second
+        UIManager.Instance.HideIntroPanel(); // Hide the intro panel
+        InitGame(); // Initialize the game
     }
 
     internal void ResumeGame()
