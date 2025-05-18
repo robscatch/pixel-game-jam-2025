@@ -14,9 +14,6 @@ public class CrystalSlotController : BoardStatsUser
     [SerializeField]
     private List<Draggable> Draggables; // List of objects to snap
 
-    [SerializeField]
-    private float snapRange = 0.5f; // Distance within which to snap
-
 
     [SerializeField]
     private GameObject slotprefab;
@@ -31,11 +28,6 @@ public class CrystalSlotController : BoardStatsUser
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        foreach (var draggable in Draggables)
-        {
-            draggable.DragEnded += OnDragEnded; // Subscribe to the DragEnded event
-            draggable.DragStarted += OnDragStarted; // Subscribe to the DragStarted event
-        }
     }
     
 
@@ -57,60 +49,7 @@ public class CrystalSlotController : BoardStatsUser
         return true;
     }
 
-    private void OnDragStarted(Transform transform)
-    {
-        //Detect if slot is being unoccupied
-        for (int i = 0; i < slots.Count; i++) // Use a for loop instead of foreach
-        {
-            var slot = slots[i];
-            if (slot.isOccupied && slot.transform.position == transform.position)
-            {
-                Debug.Log("Slot is being unoccupied " + slot.transform.name);
-                slot.isOccupied = false; // Mark the slot as unoccupied
-                slot.SetColorDefault();
-                slots[i] = slot; // Update the slot in the list
-                break;
-            }
-        }
-    }
-
-    private void OnDragEnded(Transform transform)
-    {
-        for (int i = 0; i < slots.Count; i++) // Use a for loop instead of foreach
-        {
-            var slot = slots[i];
-            if (!slot.isOccupied && Vector3.Distance(transform.position, slot.transform.position) < snapRange)
-            {
-                var crystal = transform.GetComponent<CrystalController>().CrystalType;
-                if (candleController.IsFlameOn)
-                {
-                    VerifyCrystals(crystal, slot);
-                }
-
-                Debug.Log("Snapping to slot: " + slot.transform.name);
-                transform.position = slot.transform.position; // Snap to the position
-                slot.isOccupied = true;
-                slots[i] = slot; // Update the slot in the list
-                break;
-            }
-        }
-    }
-
-    private void VerifyCrystals(CrystalType crystal, Slot slot)
-    {
-        //Check crystal type
-        if (slot.crystalType != crystal)
-        {
-            Debug.Log("Wrong crystal type: " + slot.crystalType + " != " + crystal);
-            SoundManager.Instance.PlaySingle(WrongSound);
-            slot.SetCollerWrong(); // Set the color to red
-        }
-        else
-        {
-            SoundManager.Instance.PlaySingle(CorrectSound);
-            slot.SetColorSuccess(); // Set the color to green
-        }
-    }
+    
 
     public override void OnBoardStatsSet()
     {
@@ -132,6 +71,7 @@ public class CrystalSlotController : BoardStatsUser
             var slot = Instantiate(slotprefab, transform).GetComponent<Slot>();
 
             slot.crystalType = boardStats.CrystalTypes[i];
+            slot.candleController = candleController; // Assign the CandleController to the slot
             slot.isOccupied = false; // Mark the slot as unoccupied
             slots.Add(slot); // Add the slot to the list
         }

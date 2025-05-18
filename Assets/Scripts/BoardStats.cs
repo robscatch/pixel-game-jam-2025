@@ -8,4 +8,6 @@ public class BoardStats : ScriptableObject
     public int TimeToBlowOutCandleInSeconds = 0;
 
     public List<CrystalType> CrystalTypes;
+
+    public float ThrowRate = .5f;
 }

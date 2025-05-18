@@ -20,6 +20,7 @@ public class Draggable : MonoBehaviour, IPointerClickHandler
     public void OnPointerClick(PointerEventData eventData)
     {
         _IsDragging = !_IsDragging; // Toggle dragging state
+        Debug.Log("Dragging state changed: " + _IsDragging); // Log the dragging state change
         DraggingStateChanged?.Invoke(_IsDragging); // Notify listeners of the dragging state change
 
         if (!_IsDragging)

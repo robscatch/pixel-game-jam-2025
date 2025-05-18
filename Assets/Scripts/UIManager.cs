@@ -118,6 +118,7 @@ public class UIManager : Manager<UIManager>
 
     public void GameOver(string message)
     {
+        Time.timeScale = 0; // Stop the game time
         GameOverPanel.style.display = DisplayStyle.Flex; // Show the GameOverPanel
         var gameOverText = GameOverPanel.Q<Label>("GameOverText"); // Find the GameOverText Label in the GameOverPanel
         gameOverText.text = message; // Set the text of the GameOverText Label to the provided message
