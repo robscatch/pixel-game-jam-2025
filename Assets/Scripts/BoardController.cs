@@ -25,7 +25,6 @@ public class BoardController : MonoBehaviour
         var letterObjects = GetComponentInChildren<Transform>();
         foreach (Transform letterObject in letterObjects)
         {
-            Debug.Log(letterObject.name);
             _letterPositions.Add(letterObject.name, letterObject);
             letterObject.GetComponent<SpriteRenderer>().enabled = false; // Disable the sprite renderer for each letter object
         }

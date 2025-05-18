@@ -3,6 +3,8 @@ using UnityEngine;
 public class Slot : MonoBehaviour
 {
 
+    public AudioClip CorrectSound;
+    public AudioClip WrongSound;
     public bool isOccupied; // Whether the slot is occupied or not
     public CrystalType crystalType;
     public bool isCorrect = false; // Whether the slot is correct or not
@@ -82,12 +84,23 @@ public class Slot : MonoBehaviour
     }
     public void SetColorSuccess()
     {
+        if (isCorrect)
+        {
+            return; // If the slot is already correct, do nothing
+        }
+        Debug.Log("Correct Slot");
+        SoundManager.Instance.PlaySingle(CorrectSound);
         spriteRenderer.color = Color.green; // Set the color to green
         isCorrect = true; // Mark the slot as correct
     }
 
     public void SetCollerWrong()
     {
+        if (!isCorrect)
+        {
+            return; // If the slot is already incorrect, do nothing
+        }
+        SoundManager.Instance.PlaySingle(WrongSound);
         spriteRenderer.color = Color.red; // Set the color to red
         isCorrect = false; // Mark the slot as incorrect
     }

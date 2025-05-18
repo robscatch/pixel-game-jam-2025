@@ -5,11 +5,6 @@ using UnityEngine;
 
 public class CrystalSlotController : BoardStatsUser
 {
-    [SerializeField]
-    private AudioClip CorrectSound;
-
-    [SerializeField]
-    private AudioClip WrongSound;
 
     [SerializeField]
     private List<Draggable> Draggables; // List of objects to snap

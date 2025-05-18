@@ -922,7 +922,7 @@ Transform:
   m_GameObject: {fileID: 1591268291}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.02, y: -0.12, z: 0}
+  m_LocalPosition: {x: -0.013, y: -0.086, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -962,7 +962,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -0.23111618, y: 1.6441685}
+  m_Offset: {x: -0.133708, y: 1.6441685}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -972,7 +972,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 3.684191, y: 0.81753993}
+  m_Size: {x: 5.1258335, y: 0.81753993}
   m_EdgeRadius: 0
 --- !u!114 &1603402923 stripped
 MonoBehaviour:
@@ -1266,19 +1266,19 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4902296000327455673, guid: 8d23ba772745af041a8274e40b6f2522, type: 3}
-      propertyPath: gamePlayThemes.Array.data[0]
+      propertyPath: 'gamePlayThemes.Array.data[0]'
       value: 
       objectReference: {fileID: 8300000, guid: 71cae2f3e4da9334ead7654367c8752d, type: 3}
     - target: {fileID: 4902296000327455673, guid: 8d23ba772745af041a8274e40b6f2522, type: 3}
-      propertyPath: gamePlayThemes.Array.data[1]
+      propertyPath: 'gamePlayThemes.Array.data[1]'
       value: 
       objectReference: {fileID: 8300000, guid: 8f46ae5dc36b7294ca0744881a1cdde0, type: 3}
     - target: {fileID: 4902296000327455673, guid: 8d23ba772745af041a8274e40b6f2522, type: 3}
-      propertyPath: gamePlayThemes.Array.data[2]
+      propertyPath: 'gamePlayThemes.Array.data[2]'
       value: 
       objectReference: {fileID: 8300000, guid: 11bc4161b7d278446811c274b6250de1, type: 3}
     - target: {fileID: 4902296000327455673, guid: 8d23ba772745af041a8274e40b6f2522, type: 3}
-      propertyPath: gamePlayThemes.Array.data[3]
+      propertyPath: 'gamePlayThemes.Array.data[3]'
       value: 
       objectReference: {fileID: 8300000, guid: 5efb6bc0ef3268b4c8aa92aa9df4892f, type: 3}
     m_RemovedComponents: []
@@ -1753,15 +1753,15 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1748358177}
     - target: {fileID: 8519898207472842595, guid: 722f9cfd072465f43929f8981e848c29, type: 3}
-      propertyPath: Draggables.Array.data[0]
+      propertyPath: 'Draggables.Array.data[0]'
       value: 
       objectReference: {fileID: 2100455888}
     - target: {fileID: 8519898207472842595, guid: 722f9cfd072465f43929f8981e848c29, type: 3}
-      propertyPath: Draggables.Array.data[1]
+      propertyPath: 'Draggables.Array.data[1]'
       value: 
       objectReference: {fileID: 767730005}
     - target: {fileID: 8519898207472842595, guid: 722f9cfd072465f43929f8981e848c29, type: 3}
-      propertyPath: Draggables.Array.data[2]
+      propertyPath: 'Draggables.Array.data[2]'
       value: 
       objectReference: {fileID: 1670641235}
     m_RemovedComponents: []

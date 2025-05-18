@@ -21,7 +21,6 @@ public class Throwable : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        Debug.Log("Collision detected with: " + collision.gameObject.name);
         //Stop the movement
         rb2d.angularVelocity = 0;
         rb2d.linearVelocity = Vector2.zero;

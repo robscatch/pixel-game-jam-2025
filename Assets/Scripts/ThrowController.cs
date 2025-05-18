@@ -25,7 +25,6 @@ public class ThrowController : BoardStatsUser
         //Try throwing every second
         if (Time.time % 1f < Time.deltaTime)
         {
-            Debug.Log("Throwing objects..."); // Log the throwing action
             if (Random.value < boardStats.ThrowRate)
             {
                 foreach (Throwable throwable in throwables)
