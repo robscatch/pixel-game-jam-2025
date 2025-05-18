@@ -21,6 +21,9 @@ public class BoardSpawner : MonoBehaviour
     [SerializeField]
     private PlanchetteController _planchetteController; // Prefab for the planchette
 
+    [SerializeField]
+    private ThrowController _throwController; // Reference to the ThrowController script
+
 
     private BoardController _boardController; // Reference to the BoardController script
     private BoardStats boardStatsInstance;
@@ -43,6 +46,7 @@ public class BoardSpawner : MonoBehaviour
 
         _crystalSlotController.SetBoardStats(boardStatsInstance); // Set the board stats in the CrystalSlotController
         _candleController.SetBoardStats(boardStatsInstance); // Set the board stats in the CandleController
+        _throwController.SetBoardStats(boardStatsInstance); // Set the board stats in the ThrowController
 
         StartCoroutine(StartBoard()); // Start the board after a delay
     }

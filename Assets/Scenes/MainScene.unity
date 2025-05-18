@@ -119,6 +119,55 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &319270090
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 319270091}
+  - component: {fileID: 319270092}
+  m_Layer: 0
+  m_Name: ThrowManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &319270091
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 319270090}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.06052, y: -0.19954, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &319270092
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 319270090}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44d99df30fa2ed8479409e5cac7914fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  boardStats: {fileID: 0}
+  throwables:
+  - {fileID: 1923136181}
+  - {fileID: 1670641237}
+  - {fileID: 1670641237}
 --- !u!1 &392376673
 GameObject:
   m_ObjectHideFlags: 0
@@ -947,6 +996,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb0cd4b73c74c67429e721065d475efd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1670641237 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8277486598453514659, guid: 1f93c3cc67703a241906ceecb3bdc610, type: 3}
+  m_PrefabInstance: {fileID: 5532763008245088358}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb931246970dfb949a1bc2bfe67bee01, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1748358177 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7864329341505577657, guid: 454f2fb7e0295334395a09d40055c289, type: 3}
@@ -956,6 +1016,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a2ecb09b92185dd48bd61060ed9d05ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1923136181 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8208131926142127234, guid: a367d059ed8db354b8f62a0416f0ec42, type: 3}
+  m_PrefabInstance: {fileID: 3833007664301280510}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb931246970dfb949a1bc2bfe67bee01, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &2093990498
@@ -1416,6 +1487,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 2264070072985182414, guid: 48c1ed9adf6e13f489d0771624293669, type: 3}
+      propertyPath: _throwController
+      value: 
+      objectReference: {fileID: 319270092}
+    - target: {fileID: 2264070072985182414, guid: 48c1ed9adf6e13f489d0771624293669, type: 3}
       propertyPath: _candleController
       value: 
       objectReference: {fileID: 1748358177}
@@ -1715,10 +1790,11 @@ SceneRoots:
   - {fileID: 7636655565318233318}
   - {fileID: 2720866684290319693}
   - {fileID: 392376676}
-  - {fileID: 951069649096796297}
   - {fileID: 3833007664301280510}
+  - {fileID: 951069649096796297}
   - {fileID: 5532763008245088358}
   - {fileID: 7691096217357024438}
   - {fileID: 1492206711}
   - {fileID: 500476351}
   - {fileID: 2093990499}
+  - {fileID: 319270091}
