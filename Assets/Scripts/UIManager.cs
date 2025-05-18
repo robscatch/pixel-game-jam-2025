@@ -17,6 +17,8 @@ public class UIManager : Manager<UIManager>
     private ProgressBar progressBar; // Reference to the ProgressBar component in the GameOverlayPanel
     private Label scoreLabel;
 
+    private Label SubTitleLabel;
+
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -55,25 +57,7 @@ public class UIManager : Manager<UIManager>
         });
 
 
-        //TODO THis isnt working
-        var SubTitleLabel = TitleScreen.Q<Label>("SubTitleLabel"); // Find the SubTitleLabel Label in the TitleScreen
-        SubTitleLabel.RegisterCallback<TransitionEndEvent>(e =>
-        {
-            foreach (var styleProperty in e.stylePropertyNames)
-            {
-                if (styleProperty == "opacity" && e.target == SubTitleLabel)
-                {
-                    if (SubTitleLabel.resolvedStyle.opacity >= 100)
-                    {
-                        SubTitleLabel.style.opacity = 50; // Set the opacity of the SubTitleLabel to 0 (invisible)
-                    }
-                    else if (SubTitleLabel.resolvedStyle.opacity <= 50)
-                    {
-                        SubTitleLabel.style.opacity = 100; // Set the opacity of the SubTitleLabel to 1 (visible)
-                    }
-                }
-            }
-        });
+        SubTitleLabel = TitleScreen.Q<Label>("SubTitleLabel"); // Find the SubTitleLabel Label in the TitleScreen
 
 
         GameOverPanel.RegisterCallback<TransitionEndEvent>(e =>
@@ -104,17 +88,7 @@ public class UIManager : Manager<UIManager>
         });
 
 
-        StartCoroutine(DelayedInit()); // Start the DelayedInit coroutine to initialize the UI after a delay
     }
-
-    IEnumerator DelayedInit()
-    {
-        yield return new WaitForSeconds(0.5f); // Wait for 0.5 seconds before executing the next line
-        var SubTitleLabel = TitleScreen.Q<Label>("SubTitleLabel"); // Find the SubTitleLabel Label in the TitleScreen
-        SubTitleLabel.style.opacity = 0; // Set the opacity of the SubTitleLabel to 0 (invisible)
-
-    }
-
 
     public void GameOver(string message)
     {
@@ -150,7 +124,20 @@ public class UIManager : Manager<UIManager>
     // Update is called once per frame
     void Update()
     {
-        if (Keyboard.current.spaceKey.wasPressedThisFrame && TitleScreen.style.display != DisplayStyle.None)
+        if (Time.time % 2f < Time.deltaTime)
+        {
+            if (SubTitleLabel.style.opacity == 100)
+            {
+                SubTitleLabel.style.opacity = 10;
+            }
+            else
+            {
+                SubTitleLabel.style.opacity = 100;
+            }
+        }
+
+
+            if (Keyboard.current.spaceKey.wasPressedThisFrame && TitleScreen.style.display != DisplayStyle.None)
         {
             TitleScreen.style.opacity = 0; // Set the opacity of the TitleScreen to 0 (invisible)
             return;

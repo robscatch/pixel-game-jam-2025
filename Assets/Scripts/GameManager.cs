@@ -12,11 +12,6 @@ public class GameManager : Manager<GameManager>
     public AudioClip playerDeadTheme;
     public AudioClip MainTheme;
 
-    private int currentThemeIndex = 0;
-
-    [SerializeField]
-    CountDownTimer deathTimer;
-
     [SerializeField]
     CountDownTimer ShiftTimer;
 
@@ -27,15 +22,15 @@ public class GameManager : Manager<GameManager>
 
     private int numBoardsCleared = 0; // Number of boards cleared by the player
 
+    [SerializeField]
+    private GameObject vignettePrefab;
 
+    private GameObject vignette; // Reference to the vignette effect
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        SoundManager.Instance.PlayTheme(TitleTheme); // Play the title theme music
-        Time.timeScale = 0; // Stop the game time
-        deathTimer.Finished += PlayerDied;
+        SoundManager.Instance.PlayLoop(TitleTheme); // Play the title theme music
         ShiftTimer.Finished += PlayerWins; // Subscribe to the ShiftTimer finished event
-        ShiftTimer.Begin(); // Start the shift timer
     }
 
     public int GetTimeRemaining()
@@ -72,34 +67,32 @@ public class GameManager : Manager<GameManager>
     }
 
 
-    public void PlayerPendingDeath()
-    {
-        deathTimer.Begin();
-    }
-
     public void PlayerDied()
     {
         Debug.Log("Game Over"); // Log the game over action
-        SoundManager.Instance.PlayTheme(playerDeadTheme);
-        GameManager.Instance.DestroyBoard(); // Clear the game board
-        playerIsDead = true; // Set the player dead flag to true
         UIManager.Instance.GameOver($"You have died!\n You clensed {NumBoardsCleared} boards."); // Show the game over UI
-        StopAllTimers();
+        SoundManager.Instance.PlayLoop(playerDeadTheme);
+        Cleanup();
     }
 
-    private void StopAllTimers()
+    private void Cleanup()
     {
-        deathTimer.Stop(); // Stop the death timer
+        Time.timeScale = 0; // Stop the game time
+        playerIsDead = true; // Set the player dead flag to true
+        if (vignette != null)
+        {
+            Destroy(vignette.gameObject); // Destroy the vignette effect if it exists
+        }
         ShiftTimer.Stop(); // Stop the shift timer
+        DestroyBoard(); // Clear the game board
     }
+
 
     public void PlayerWins()
     {
         Debug.Log("Player Wins"); // Log the player win action
-        GameManager.Instance.DestroyBoard(); // Clear the game board
-        playerIsDead = true;
         UIManager.Instance.GameOver($"You survived your shift!\n You clensed {NumBoardsCleared} boards."); // Show the game over UI
-        StopAllTimers();
+        Cleanup();
     }
 
     public void InitGame()
@@ -108,7 +101,9 @@ public class GameManager : Manager<GameManager>
         SoundManager.Instance.PlayTheme(MainTheme); // Play the main theme music
         Debug.Log("Game Initialized"); // Log the game initialization
         Time.timeScale = 1; // Resume the game time
+        numBoardsCleared = 0; // Reset the number of boards cleared
 
+        ShiftTimer.Begin(); // Start the shift timer
         _boardSpawner.SpawnBoard(); // Spawn the game board
     }
 
@@ -129,5 +124,10 @@ public class GameManager : Manager<GameManager>
     {
         Debug.Log("Quit Game"); // Log the quit action
         Application.Quit(); // Quit the application
+    }
+
+    internal void StartWarning()
+    {
+        vignette = Instantiate(vignettePrefab); // Instantiate the vignette effect
     }
 }

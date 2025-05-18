@@ -6,6 +6,7 @@ public class SoundManager : Manager<SoundManager>
 {
     public AudioSource efxSource;
     public AudioSource musicSource;
+    public AudioSource LoopingSource;
 
     public float lowPitchRange = .95f;
     public float highPitchRange = 1.05f;
@@ -13,6 +14,7 @@ public class SoundManager : Manager<SoundManager>
 
     public void PlayTheme(AudioClip theme)
     {
+        LoopingSource.Stop(); // Stop the looping source if it's playing
         if (theme == null)
         {
             Debug.Log("No Sound configured");
@@ -21,6 +23,18 @@ public class SoundManager : Manager<SoundManager>
 
         musicSource.clip = theme;
         musicSource.Play();
+    }
+
+
+    public void PlayLoop(AudioClip theme)
+    {
+        if (theme == null)
+        {
+            Debug.Log("No Sound configured");
+            return;
+        }
+        LoopingSource.clip = theme;
+        LoopingSource.Play();
     }
 
     public void PlaySingle(AudioClip clip)

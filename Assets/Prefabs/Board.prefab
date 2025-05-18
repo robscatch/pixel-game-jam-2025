@@ -446,6 +446,7 @@ GameObject:
   - component: {fileID: 7863288182001396826}
   - component: {fileID: 9153442807919820842}
   - component: {fileID: 8120244001871732245}
+  - component: {fileID: 249161939405269652}
   m_Layer: 0
   m_Name: Board
   m_TagString: Untagged
@@ -462,7 +463,7 @@ Transform:
   m_GameObject: {fileID: 2409163158329890601}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 1.6, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -563,6 +564,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _planchetteController: {fileID: 0}
   _candleController: {fileID: 0}
+--- !u!111 &249161939405269652
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2409163158329890601}
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Animation: {fileID: 7400000, guid: adb261995d0674c45bb0404f58c7fadb, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: adb261995d0674c45bb0404f58c7fadb, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_UpdateMode: 0
+  m_CullingType: 0
 --- !u!1 &2810744417625418847
 GameObject:
   m_ObjectHideFlags: 0

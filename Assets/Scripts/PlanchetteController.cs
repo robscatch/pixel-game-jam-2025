@@ -58,6 +58,12 @@ public class PlanchetteController : MonoBehaviour
 
     void IncreasePlanchetteSpeed()
     {
+        if ( numIncreases == 3)
+        {
+            GameManager.Instance.StartWarning();
+        }
+
+
         if (!AtMaxSpeed && numIncreases >= 4)
         {
             countDownTimer.Stop();

@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 8601365805818254876}
   - component: {fileID: 2956318399745716752}
   - component: {fileID: 4154170788544298041}
+  - component: {fileID: 1654287531580908744}
   m_Layer: 0
   m_Name: 'planchette '
   m_TagString: Untagged
@@ -30,7 +31,7 @@ Transform:
   m_GameObject: {fileID: 7458106737864264427}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 1.6, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -177,3 +178,20 @@ MonoBehaviour:
   duration: 5
   timeRemaining: 0
   isCountingDown: 0
+--- !u!111 &1654287531580908744
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7458106737864264427}
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Animation: {fileID: 7400000, guid: adb261995d0674c45bb0404f58c7fadb, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: adb261995d0674c45bb0404f58c7fadb, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_UpdateMode: 0
+  m_CullingType: 0

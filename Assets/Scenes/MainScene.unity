@@ -1258,6 +1258,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1603402923}
     - target: {fileID: 4902296000327455673, guid: 8d23ba772745af041a8274e40b6f2522, type: 3}
+      propertyPath: vignettePrefab
+      value: 
+      objectReference: {fileID: 1789900151152810739, guid: 4ee9be4b2b3390343a9ef1ec4acbd483, type: 3}
+    - target: {fileID: 4902296000327455673, guid: 8d23ba772745af041a8274e40b6f2522, type: 3}
       propertyPath: playerDeadTheme
       value: 
       objectReference: {fileID: 8300000, guid: 7bf77d77f8cf9194982f77f3c28201f4, type: 3}
