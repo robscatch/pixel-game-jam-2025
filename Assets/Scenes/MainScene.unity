@@ -1539,33 +1539,9 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1748358177}
     - target: {fileID: 2264070072985182414, guid: 48c1ed9adf6e13f489d0771624293669, type: 3}
-      propertyPath: _boardStats.Array.size
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 2264070072985182414, guid: 48c1ed9adf6e13f489d0771624293669, type: 3}
       propertyPath: _crystalSlotController
       value: 
       objectReference: {fileID: 1544906904}
-    - target: {fileID: 2264070072985182414, guid: 48c1ed9adf6e13f489d0771624293669, type: 3}
-      propertyPath: '_boardStats.Array.data[2]'
-      value: 
-      objectReference: {fileID: 11400000, guid: f8ea2dd6f80abcd4fb072c01cca6656e, type: 2}
-    - target: {fileID: 2264070072985182414, guid: 48c1ed9adf6e13f489d0771624293669, type: 3}
-      propertyPath: '_boardStats.Array.data[3]'
-      value: 
-      objectReference: {fileID: 11400000, guid: 386db596a4f8e8a4c85f06be45c2e22c, type: 2}
-    - target: {fileID: 2264070072985182414, guid: 48c1ed9adf6e13f489d0771624293669, type: 3}
-      propertyPath: '_boardStats.Array.data[4]'
-      value: 
-      objectReference: {fileID: 11400000, guid: cba6e76d4a6faaa44933a83de014d620, type: 2}
-    - target: {fileID: 2264070072985182414, guid: 48c1ed9adf6e13f489d0771624293669, type: 3}
-      propertyPath: '_boardStats.Array.data[5]'
-      value: 
-      objectReference: {fileID: 11400000, guid: cba6e76d4a6faaa44933a83de014d620, type: 2}
-    - target: {fileID: 2264070072985182414, guid: 48c1ed9adf6e13f489d0771624293669, type: 3}
-      propertyPath: '_boardStats.Array.data[6]'
-      value: 
-      objectReference: {fileID: 11400000, guid: cba6e76d4a6faaa44933a83de014d620, type: 2}
     - target: {fileID: 4490432372799306811, guid: 48c1ed9adf6e13f489d0771624293669, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

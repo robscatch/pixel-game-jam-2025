@@ -46,9 +46,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _boardPrefabs:
   - {fileID: 2409163158329890601, guid: cc53c057607247b4d8a7170a5291ada6, type: 3}
+  - {fileID: 2235861890243444627, guid: 137005a42c0f62d4bba7bcb375bca020, type: 3}
+  - {fileID: 1680266412808046333, guid: f8d9b87d82ec0e749b50d16fd85a9a6d, type: 3}
+  - {fileID: 5678640680925325513, guid: 386698bf78791854ea4b69a959e66e46, type: 3}
+  - {fileID: 2951031194005036268, guid: 0b2e733bd4f224040ba1ba56e29be05e, type: 3}
   _boardStats:
   - {fileID: 11400000, guid: 81cb27781a858f0448049b625682b9e4, type: 2}
   - {fileID: 11400000, guid: a862bb377c859a84ca81cbeb82666fc4, type: 2}
+  - {fileID: 11400000, guid: f8ea2dd6f80abcd4fb072c01cca6656e, type: 2}
+  - {fileID: 11400000, guid: 386db596a4f8e8a4c85f06be45c2e22c, type: 2}
+  - {fileID: 11400000, guid: cba6e76d4a6faaa44933a83de014d620, type: 2}
+  - {fileID: 11400000, guid: cba6e76d4a6faaa44933a83de014d620, type: 2}
+  - {fileID: 11400000, guid: cba6e76d4a6faaa44933a83de014d620, type: 2}
   _candleController: {fileID: 0}
   _crystalSlotController: {fileID: 0}
   _planchetteController: {fileID: 8601365805818254876, guid: 152fdf39f67d52c4fa6b488c009ffad3, type: 3}
