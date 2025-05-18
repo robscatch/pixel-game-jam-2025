@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a531f0c348001540bd20e55ffd3f4f9, type: 3}
+  m_Name: Board3
+  m_EditorClassIdentifier: 
+  TimeToBlowOutCandleInSeconds: 30
+  CrystalTypes:
+  - {fileID: 11400000, guid: 3d2836beca71f7c41ac6111a34f003ab, type: 2}
+  - {fileID: 11400000, guid: b8298d5cc470eef4cadac8df402e44a1, type: 2}
+  - {fileID: 11400000, guid: 1428d31030f1cdf4a9e423e8ea2524db, type: 2}
+  ThrowRate: 0.5

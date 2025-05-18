@@ -47,7 +47,9 @@ MonoBehaviour:
   _boardPrefabs:
   - {fileID: 2409163158329890601, guid: cc53c057607247b4d8a7170a5291ada6, type: 3}
   _boardStats:
+  - {fileID: 11400000, guid: 81cb27781a858f0448049b625682b9e4, type: 2}
   - {fileID: 11400000, guid: a862bb377c859a84ca81cbeb82666fc4, type: 2}
   _candleController: {fileID: 0}
   _crystalSlotController: {fileID: 0}
   _planchetteController: {fileID: 8601365805818254876, guid: 152fdf39f67d52c4fa6b488c009ffad3, type: 3}
+  _throwController: {fileID: 0}

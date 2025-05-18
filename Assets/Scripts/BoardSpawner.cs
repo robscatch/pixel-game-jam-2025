@@ -2,6 +2,7 @@ using NUnit.Framework;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class BoardSpawner : MonoBehaviour 
 {
@@ -29,15 +30,25 @@ public class BoardSpawner : MonoBehaviour
     private BoardStats boardStatsInstance;
     private PlanchetteController planchetteControllerInstance;
 
+    private bool firstBoard = true;
+
 
     public void SpawnBoard()
     {
         //Get Random board
         int randomIndex = Random.Range(0, _boardPrefabs.Count);
+        Debug.Log("Spawning board: " + randomIndex); // Log the index of the spawned board prefab
         _boardController = Instantiate(_boardPrefabs[randomIndex], transform).GetComponent<BoardController>(); // Instantiate the board prefab and get the BoardController component
 
-        //Get Random board stats
         int randomStatsIndex = Random.Range(0, _boardStats.Count);
+        if (firstBoard)
+        {
+            randomStatsIndex = 0;
+            firstBoard = false; // Set firstBoard to false after the first spawn
+        }
+
+        //Get Random board stats
+        Debug.Log("Using board stats: " + randomStatsIndex); // Log the index of the board stats used
         boardStatsInstance = Instantiate(_boardStats[randomStatsIndex]); // Get the random board stats
         planchetteControllerInstance = Instantiate(_planchetteController); // Instantiate the planchette controller prefab
 
