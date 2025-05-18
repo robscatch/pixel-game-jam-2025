@@ -70,6 +70,14 @@ public class BoardSpawner : MonoBehaviour
 
     public void DestroyBoard()
     {
+        _boardController.RemoveBoard();
+        StartCoroutine(DelayDestroy()); // Start the delay initialization coroutine
+
+    }
+
+    IEnumerator DelayDestroy()
+    {
+        yield return new WaitForSeconds(1f); // Wait for 1 second
         if (_boardController != null)
         {
             Destroy(_boardController.gameObject); // Destroy the board game object
@@ -86,4 +94,5 @@ public class BoardSpawner : MonoBehaviour
             planchetteControllerInstance = null; // Set the reference to null
         }
     }
+
 }

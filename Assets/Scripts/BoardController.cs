@@ -20,10 +20,13 @@ public class BoardController : MonoBehaviour
     public PlanchetteController PlanchetteController { get => _planchetteController; set => _planchetteController = value; }
     public CandleController CandleController { get => _candleController; set => _candleController = value; }
 
+    private Animation Animation;
+
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        Animation = GetComponent<Animation>();
         var letterObjects = GetComponentInChildren<Transform>();
         foreach (Transform letterObject in letterObjects)
         {
@@ -32,6 +35,12 @@ public class BoardController : MonoBehaviour
         }
 
     }
+
+    public void RemoveBoard()
+    {
+        Animation.Play("Boardout");
+    }
+
     public void SetNewPosition(Vector3 position)
     {
         // Stop any ongoing movement

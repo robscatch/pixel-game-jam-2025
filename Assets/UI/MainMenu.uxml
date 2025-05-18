@@ -18,5 +18,9 @@
         <ui:VisualElement style="flex-grow: 1; position: absolute; top: 0; right: 0; left: 0; bottom: 0; background-image: url(&quot;project://database/Assets/Sprites/title.aseprite?fileID=2054396645512381474&amp;guid=dc03a6b7456c29f4aad5fae61631e8c7&amp;type=3#title&quot;); -unity-background-image-tint-color: rgb(63, 63, 63);" />
         <ui:Label text="WEEGEE Cleanse" name="TitleLabel" style="font-size: 100%; color: rgb(255, 255, 255); -unity-font-definition: url(&quot;project://database/Assets/Fonts/PressStart2P-Regular.ttf?fileID=12800000&amp;guid=b284a6525342f44599e9ce79e37c2d61&amp;type=3#PressStart2P-Regular&quot;); transition-property: opacity; transition-timing-function: ease-in-out;" />
         <ui:Label text="Press &apos;space&apos; to start" name="SubTitleLabel" style="color: rgb(255, 255, 255); font-size: 37px; -unity-font-definition: url(&quot;project://database/Assets/Fonts/PressStart2P-Regular.ttf?fileID=12800000&amp;guid=b284a6525342f44599e9ce79e37c2d61&amp;type=3#PressStart2P-Regular&quot;); opacity: 1; transition-property: opacity; transition-duration: 1s; transition-timing-function: ease;" />
+        <ui:VisualElement name="credits" style="flex-grow: 1; position: absolute; bottom: 58px; flex-direction: column;">
+            <ui:Label text="Dev/Art By:&#10;RobCatch (Click for Socials)" name="rob" style="font-size: 20px; color: rgb(255, 255, 255); height: 51px;" />
+            <ui:Label text="Music By:&#10;Emilio Vargas (click for SoundCloud)" name="emi" style="font-size: 20px; color: rgb(255, 255, 255);" />
+        </ui:VisualElement>
     </ui:VisualElement>
 </ui:UXML>

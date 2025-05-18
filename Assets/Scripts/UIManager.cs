@@ -22,11 +22,23 @@ public class UIManager : Manager<UIManager>
     private VisualElement IntroPanel;
 
 
+    private VisualElement credits;
+    private Label robs;
+
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         root = uiDocument.rootVisualElement; // Get the root VisualElement from the UIDocument
         TitleScreen = root.Q<VisualElement>("TitleScreen"); // Find the TitleScreen VisualElement by name
+        credits = root.Q<VisualElement>("credits"); // Find the Credits VisualElement by name
+        robs = root.Q<Label>("rob"); // Find the robs Label in the Credits VisualElement
+
+        //Click to open link on web browser
+        robs.RegisterCallback<ClickEvent>(e =>
+        {
+            Application.OpenURL("https://linktr.ee/robscatch?utm_source=linktree_admin_share");
+        });
 
         PauseMenu = root.Q<VisualElement>("PauseMenu"); // Find the PauseMenu VisualElement by name
         PauseMenu.style.display = DisplayStyle.None; // Initially hide the PauseMenu
