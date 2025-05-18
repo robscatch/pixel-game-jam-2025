@@ -47,11 +47,16 @@ public class GameManager : Manager<GameManager>
     void Update()
     {
     }
+
+    public void IncrementNumBoardsCleared()
+    {
+        numBoardsCleared++; // Increment the number of boards cleared
+        Debug.Log($"Num Boards Cleared: {numBoardsCleared}"); // Log the number of boards cleared
+    }
     
     public void DestroyBoard()
     {
         _boardSpawner.DestroyBoard(); // Destroy the game board
-        NumBoardsCleared++;
     }
 
 
@@ -63,16 +68,14 @@ public class GameManager : Manager<GameManager>
 
     public void PlayerPendingDeath()
     {
-        Debug.Log("Player is pending death"); // Log the player death action
         deathTimer.Begin();
     }
 
     public void PlayerDied()
     {
-       Debug.Log("Game Over"); // Log the game over action
+        Debug.Log("Game Over"); // Log the game over action
         GameManager.Instance.DestroyBoard(); // Clear the game board
         playerIsDead = true; // Set the player dead flag to true
-        Time.timeScale = 0; // Stop the game time
         UIManager.Instance.GameOver($"You have died!\n You clensed {NumBoardsCleared} boards."); // Show the game over UI
         StopAllTimers();
     }
@@ -88,7 +91,6 @@ public class GameManager : Manager<GameManager>
         Debug.Log("Player Wins"); // Log the player win action
         GameManager.Instance.DestroyBoard(); // Clear the game board
         playerIsDead = true;
-        Time.timeScale = 0; // Stop the game time
         UIManager.Instance.GameOver($"You survived your shift!\n You clensed {NumBoardsCleared} boards."); // Show the game over UI
         StopAllTimers();
     }

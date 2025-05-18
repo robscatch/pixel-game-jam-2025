@@ -14,6 +14,7 @@ public class ChantController : MonoBehaviour, IPointerClickHandler
             Debug.Log("All crystals are correct!"); // Log message when all crystals are correct
             SoundManager.Instance.PlaySingle(null);
             GameManager.Instance.DestroyBoard(); // Clear the game board
+            GameManager.Instance.IncrementNumBoardsCleared(); // Increment the number of boards cleared
             StartCoroutine(WaitBeforeSpawning()); // Wait before spawning a new board
         }
         else
