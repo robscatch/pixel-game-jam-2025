@@ -59,6 +59,7 @@ public class UIManager : Manager<UIManager>
         //after the animation is done, hide the TitleScreen
         TitleScreen.RegisterCallback<TransitionEndEvent>(e =>
         {
+            Debug.Log("TitleScreen TransitionEndEvent triggered");
             foreach (var styleProperty in e.stylePropertyNames)
             {
                 if (styleProperty == "opacity" && e.target == TitleScreen)
@@ -79,10 +80,16 @@ public class UIManager : Manager<UIManager>
 
         GameOverPanel.RegisterCallback<TransitionEndEvent>(e =>
         {
+            Debug.Log("GameOverPanel TransitionEndEvent triggered");
             foreach (var styleProperty in e.stylePropertyNames)
             {
                 if (styleProperty == "opacity" && e.target == GameOverPanel)
                 {
+                    if (GameOverPanel.style.opacity == 100)
+                    {
+                        Debug.Log("GameOver panel is fading in");
+                        return;
+                    }
                     Debug.Log("Animation finished, hiding GameOverPanel.");
                     GameOverPanel.style.display = DisplayStyle.None; // Hide the GameOverPanel after the animation is done
 
@@ -119,10 +126,14 @@ public class UIManager : Manager<UIManager>
 
     public void GameOver(string message)
     {
-        Time.timeScale = 0; // Stop the game time
-        GameOverPanel.style.display = DisplayStyle.Flex; // Show the GameOverPanel
+        GameOverPanel.style.opacity = 100; // Set the opacity of the GameOverPanel to 100 (fully visible)
+
+        GameOverlayPanel.style.display = DisplayStyle.None; // Hide the GameOverlayPanel
         var gameOverText = GameOverPanel.Q<Label>("GameOverText"); // Find the GameOverText Label in the GameOverPanel
         gameOverText.text = message; // Set the text of the GameOverText Label to the provided message
+
+        Debug.Log("GameOver called about to display panel"); // Log the GameOver action
+        GameOverPanel.style.display = DisplayStyle.Flex; // Show the GameOverPanel
     }
     void UpdateProgressBar(float value)
     {
@@ -151,27 +162,16 @@ public class UIManager : Manager<UIManager>
     // Update is called once per frame
     void Update()
     {
-        if (Time.time % 2f < Time.deltaTime)
-        {
-            if (SubTitleLabel.style.opacity == 100)
-            {
-                SubTitleLabel.style.opacity = 10;
-            }
-            else
-            {
-                SubTitleLabel.style.opacity = 100;
-            }
-        }
 
-
-            if (Keyboard.current.spaceKey.wasPressedThisFrame && TitleScreen.style.display != DisplayStyle.None)
+        if (Keyboard.current.spaceKey.wasPressedThisFrame && TitleScreen.style.display != DisplayStyle.None)
         {
+            Debug.Log("TitleScreen space key pressed");
             TitleScreen.style.opacity = 0; // Set the opacity of the TitleScreen to 0 (invisible)
             return;
         }
-
-        if (Keyboard.current.spaceKey.wasPressedThisFrame && GameOverPanel.style.display != DisplayStyle.None && GameManager.Instance.playerIsDead)
+        else if (Keyboard.current.spaceKey.wasPressedThisFrame && GameOverPanel.style.display != DisplayStyle.None && GameManager.Instance.playerIsDead)
         {
+            Debug.Log("GameOverPanel space key pressed");
             GameOverPanel.style.opacity = 0;// Hide the GameOverPanel
             return;
         }

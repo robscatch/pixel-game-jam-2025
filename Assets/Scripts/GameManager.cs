@@ -35,6 +35,8 @@ public class GameManager : Manager<GameManager>
     {
         SoundManager.Instance.PlayLoop(TitleTheme); // Play the title theme music
         ShiftTimer.Finished += PlayerWins; // Subscribe to the ShiftTimer finished event
+        vignette = Instantiate(vignettePrefab); // Instantiate the vignette effect
+        vignette.SetActive(false); // Initially hide the vignette effect
     }
 
     public int GetTimeRemaining()
@@ -66,6 +68,7 @@ public class GameManager : Manager<GameManager>
 
     public void SpawnBoard()
     {
+        vignette.SetActive(false); // Hide the vignette effect
         SoundManager.Instance.PlayTheme(MainTheme);
         _boardSpawner.SpawnBoard(); // Spawn the game board
     }
@@ -73,6 +76,7 @@ public class GameManager : Manager<GameManager>
 
     public void PlayerDied()
     {
+        playerIsDead = true; // Set the player dead flag to true
         Debug.Log("Game Over"); // Log the game over action
         UIManager.Instance.GameOver($"You have died!\n You clensed {NumBoardsCleared} boards."); // Show the game over UI
         SoundManager.Instance.PlayLoop(playerDeadTheme);
@@ -81,12 +85,7 @@ public class GameManager : Manager<GameManager>
 
     private void Cleanup()
     {
-        Time.timeScale = 0; // Stop the game time
-        playerIsDead = true; // Set the player dead flag to true
-        if (vignette != null)
-        {
-            Destroy(vignette.gameObject); // Destroy the vignette effect if it exists
-        }
+        vignette.SetActive(false); // Hide the vignette effect
         ShiftTimer.Stop(); // Stop the shift timer
         DestroyBoard(); // Clear the game board
     }
@@ -94,6 +93,7 @@ public class GameManager : Manager<GameManager>
 
     public void PlayerWins()
     {
+        playerIsDead = true; // Set the player dead flag to true
         Debug.Log("Player Wins"); // Log the player win action
         UIManager.Instance.GameOver($"You survived your shift!\n You clensed {NumBoardsCleared} boards."); // Show the game over UI
         Cleanup();
@@ -103,12 +103,14 @@ public class GameManager : Manager<GameManager>
     {
         if (firstTime)
         {
+            Debug.Log("First Time Init"); // Log the first time initialization
             UIManager.Instance.DisplayIntroPanel(); // Show the intro panel
             firstTime = false; // Set first time to false
             StartCoroutine(DelayInit()); // Start the game initialization after a delay
             return;
         }
 
+        vignette.SetActive(false); // Hide the vignette effect
         playerIsDead = false; // Reset the player dead flag
         SoundManager.Instance.PlayTheme(MainTheme); // Play the main theme music
         Debug.Log("Game Initialized"); // Log the game initialization
@@ -147,6 +149,6 @@ public class GameManager : Manager<GameManager>
 
     internal void StartWarning()
     {
-        vignette = Instantiate(vignettePrefab); // Instantiate the vignette effect
+        vignette.SetActive(true); // Show the vignette effect
     }
 }
