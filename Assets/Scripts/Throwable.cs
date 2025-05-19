@@ -19,6 +19,7 @@ public class Throwable : MonoBehaviour
     }
 
 
+    // Instead of using physics we can use a collection of valid areas and pick from those to move 
     private void OnCollisionEnter2D(Collision2D collision)
     {
         //Stop the movement
