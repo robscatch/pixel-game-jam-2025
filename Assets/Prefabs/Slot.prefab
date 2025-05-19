@@ -106,7 +106,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d24d7e71d12bbc544bff83ad7f904537, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CorrectSound: {fileID: 8300000, guid: dfbc37e99fcfc2e44b84fad34f9a5707, type: 3}
+  CorrectSound: {fileID: 8300000, guid: 501ef60318737f346aa8149ae249bc25, type: 3}
   WrongSound: {fileID: 8300000, guid: 1786c0a39b2905a46b34e9033123133d, type: 3}
   isOccupied: 0
   crystalType: {fileID: 0}

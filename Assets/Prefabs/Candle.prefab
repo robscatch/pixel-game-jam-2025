@@ -104,6 +104,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   boardStats: {fileID: 0}
+  LightCandleSound: {fileID: 8300000, guid: 400718c4f13b73f4eaf99622a9baa0fb, type: 3}
+  BlowOutCandleSound: {fileID: 8300000, guid: 40426a8633eb03c4193b69b542144a36, type: 3}
 --- !u!61 &6028042821891040861
 BoxCollider2D:
   m_ObjectHideFlags: 0

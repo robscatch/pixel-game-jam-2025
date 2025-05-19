@@ -168,6 +168,7 @@ MonoBehaviour:
   - {fileID: 1923136181}
   - {fileID: 1670641237}
   - {fileID: 1670641237}
+  throwSound: {fileID: 8300000, guid: 975763e035ca5ec4a9f912f2c7ee63f8, type: 3}
 --- !u!1 &392376673
 GameObject:
   m_ObjectHideFlags: 0
@@ -336,6 +337,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _spriteRenderer: {fileID: 555708373}
+  _infoSound: {fileID: 8300000, guid: 4412eabc4e9af6947a3046aea34ffb65, type: 3}
 --- !u!61 &500476356
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1254,6 +1256,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8300000, guid: c9fe7f2b017e55d449674c4f6af93c56, type: 3}
     - target: {fileID: 4902296000327455673, guid: 8d23ba772745af041a8274e40b6f2522, type: 3}
+      propertyPath: winnerTheme
+      value: 
+      objectReference: {fileID: 8300000, guid: 63426c47b38462c4bb312b91549d9103, type: 3}
+    - target: {fileID: 4902296000327455673, guid: 8d23ba772745af041a8274e40b6f2522, type: 3}
       propertyPath: _boardSpawner
       value: 
       objectReference: {fileID: 1603402923}
@@ -1342,10 +1348,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Candle
       objectReference: {fileID: 0}
-    - target: {fileID: 7864329341505577657, guid: 454f2fb7e0295334395a09d40055c289, type: 3}
-      propertyPath: LightCandleSound
-      value: 
-      objectReference: {fileID: 8300000, guid: 400718c4f13b73f4eaf99622a9baa0fb, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1744,14 +1746,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: CrystalSlots
       objectReference: {fileID: 0}
-    - target: {fileID: 8519898207472842595, guid: 722f9cfd072465f43929f8981e848c29, type: 3}
-      propertyPath: WrongSound
-      value: 
-      objectReference: {fileID: 8300000, guid: 1786c0a39b2905a46b34e9033123133d, type: 3}
-    - target: {fileID: 8519898207472842595, guid: 722f9cfd072465f43929f8981e848c29, type: 3}
-      propertyPath: CorrectSound
-      value: 
-      objectReference: {fileID: 8300000, guid: dfbc37e99fcfc2e44b84fad34f9a5707, type: 3}
     - target: {fileID: 8519898207472842595, guid: 722f9cfd072465f43929f8981e848c29, type: 3}
       propertyPath: candleController
       value: 

@@ -101,6 +101,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 001b440ced2948a40ade2f2149f25dd0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  GulpSound: {fileID: 8300000, guid: 47a7246616f3cc94fad252a83f199479, type: 3}
   _crystalSlotController: {fileID: 0}
 --- !u!61 &5536731536584548156
 BoxCollider2D:

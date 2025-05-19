@@ -54,7 +54,6 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  snapRange: 0.2
   slotprefab: {fileID: 4121430835124947110, guid: b47569626d248fa4dab2db0437d658fb, type: 3}
   candleController: {fileID: 0}
 --- !u!114 &717418997811530787

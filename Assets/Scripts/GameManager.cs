@@ -11,6 +11,7 @@ public class GameManager : Manager<GameManager>
     public AudioClip TitleTheme;
 
     public AudioClip playerDeadTheme;
+    public AudioClip winnerTheme;
     public AudioClip MainTheme;
 
     [SerializeField]
@@ -95,6 +96,7 @@ public class GameManager : Manager<GameManager>
     {
         playerIsDead = true; // Set the player dead flag to true
         Debug.Log("Player Wins"); // Log the player win action
+        SoundManager.Instance.PlayLoop(winnerTheme);
         UIManager.Instance.GameOver($"You survived your shift!\n You clensed {NumBoardsCleared} boards."); // Show the game over UI
         Cleanup();
     }

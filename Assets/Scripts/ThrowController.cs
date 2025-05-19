@@ -6,6 +6,8 @@ public class ThrowController : BoardStatsUser
     [SerializeField]
     private Throwable[] throwables; // Array of throwable objects
 
+    [SerializeField]
+    private AudioClip throwSound; // Sound to play when throwing objects
 
     private bool StartThrowing = false;
 
@@ -17,7 +19,13 @@ public class ThrowController : BoardStatsUser
     // Update is called once per frame
     void Update()
     {
-        if(!StartThrowing)
+        if (GameManager.Instance.playerIsDead)
+        {
+            return; // If the player is dead, do not throw objects
+        }
+
+
+        if (!StartThrowing)
         {
             return; 
         }
@@ -27,6 +35,8 @@ public class ThrowController : BoardStatsUser
         {
             if (Random.value < boardStats.ThrowRate)
             {
+                SoundManager.Instance.PlaySingle(throwSound); // Play the throw sound
+
                 foreach (Throwable throwable in throwables)
                 {
                     throwable.ThrowRandomly(); // Call the ThrowRandomly method on each throwable object

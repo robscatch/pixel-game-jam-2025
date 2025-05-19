@@ -6,8 +6,12 @@ public class infoController : MonoBehaviour, IPointerClickHandler
     [SerializeField]
     private SpriteRenderer _spriteRenderer; // Reference to the SpriteRenderer component
 
+    [SerializeField]
+    private AudioClip _infoSound; // Reference to the sound clip to play
+
     public void OnPointerClick(PointerEventData eventData)
     {
+        SoundManager.Instance.PlaySingle(_infoSound); // Play the sound when clicked
         _spriteRenderer.enabled = !_spriteRenderer.enabled; // Toggle the visibility of the sprite when clicked
     }
 

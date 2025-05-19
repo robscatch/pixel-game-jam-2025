@@ -28,6 +28,7 @@ public class SoundManager : Manager<SoundManager>
 
     public void PlayLoop(AudioClip theme)
     {
+        musicSource.Stop(); // Stop the looping source if it's playing
         if (theme == null)
         {
             Debug.Log("No Sound configured");
