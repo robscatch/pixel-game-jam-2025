@@ -32,6 +32,7 @@ jobs:
         UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
       with:
         targetPlatform: WebGL
+        allowDirtyBuild: true # should not leave here, but plastic scm does not work well with git lfs
     - uses: buildalon/setup-butler@v1
       with:
         api-key: ${{ secrets.BUTLER_CREDENTIALS  }}
