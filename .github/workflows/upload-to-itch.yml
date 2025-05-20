@@ -37,6 +37,6 @@ jobs:
       with:
         api-key: ${{ secrets.BUTLER_CREDENTIALS  }}
     - name: Upload to itch.io
-      run: butler push build/WebGL robscatch/test-project:html5
+      run: butler push build/WebGL robscatch/${{ vars.ITCHPROJECTNAME }}:html5
       env:
         BUTLER_API_KEY: ${{ secrets.BUTLER_CREDENTIALS  }}
