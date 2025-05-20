@@ -70,6 +70,7 @@ public class BoardSpawner : MonoBehaviour
 
     public void DestroyBoard()
     {
+        _candleController.BlowOutCandle(); // Blow out the candle
         _boardController.RemoveBoard();
         StartCoroutine(DelayDestroy()); // Start the delay initialization coroutine
 

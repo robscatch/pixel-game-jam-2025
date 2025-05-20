@@ -73,22 +73,20 @@ public class GameManager : Manager<GameManager>
         SoundManager.Instance.PlayTheme(MainTheme);
         _boardSpawner.SpawnBoard(); // Spawn the game board
     }
-
-
-    public void PlayerDied()
-    {
-        playerIsDead = true; // Set the player dead flag to true
-        Debug.Log("Game Over"); // Log the game over action
-        UIManager.Instance.GameOver($"You have died!\n You clensed {NumBoardsCleared} boards."); // Show the game over UI
-        SoundManager.Instance.PlayLoop(playerDeadTheme);
-        Cleanup();
-    }
-
     private void Cleanup()
     {
         vignette.SetActive(false); // Hide the vignette effect
         ShiftTimer.Stop(); // Stop the shift timer
         DestroyBoard(); // Clear the game board
+    }
+
+    public void PlayerDied()
+    {
+        playerIsDead = true; // Set the player dead flag to true
+        Debug.Log("Game Over"); // Log the game over action
+        UIManager.Instance.GameOver($"You have died!\n You clensed {NumBoardsCleared} boards.", false); // Show the game over UI
+        SoundManager.Instance.PlayLoop(playerDeadTheme);
+        Cleanup();
     }
 
 
@@ -97,7 +95,7 @@ public class GameManager : Manager<GameManager>
         playerIsDead = true; // Set the player dead flag to true
         Debug.Log("Player Wins"); // Log the player win action
         SoundManager.Instance.PlayLoop(winnerTheme);
-        UIManager.Instance.GameOver($"You survived your shift!\n You clensed {NumBoardsCleared} boards."); // Show the game over UI
+        UIManager.Instance.GameOver($"You survived your shift!\n You clensed {NumBoardsCleared} boards.", true); // Show the game over UI
         Cleanup();
     }
 

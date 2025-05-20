@@ -36,7 +36,7 @@ public class CandleController : BoardStatsUser, IPointerClickHandler
         _countDownTimer.Finished += BlowOutCandle; // Subscribe to the Finished event of the countdown timer
     }
 
-    private void BlowOutCandle()
+    public void BlowOutCandle()
     {
         if (IsFlameOn)
         {

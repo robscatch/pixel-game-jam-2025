@@ -1819,6 +1819,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: UIManager
       objectReference: {fileID: 0}
+    - target: {fileID: 7852228998087495844, guid: 3216599cb37aca64ea03943c4766f4cc, type: 3}
+      propertyPath: LosingScreen
+      value: 
+      objectReference: {fileID: 8783137428466481859, guid: 393fb2ade0a1aab42b7c656dafbc129f, type: 3}
+    - target: {fileID: 7852228998087495844, guid: 3216599cb37aca64ea03943c4766f4cc, type: 3}
+      propertyPath: WinningScreen
+      value: 
+      objectReference: {fileID: -4884494066865590286, guid: 1678e8f6fd326384c803fbcffe4771bc, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

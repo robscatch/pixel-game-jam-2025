@@ -27,6 +27,10 @@ public class UIManager : Manager<UIManager>
     private Label emi;
 
 
+    [SerializeField] Sprite WinningScreen;
+    [SerializeField] Sprite LosingScreen;
+
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -131,13 +135,16 @@ public class UIManager : Manager<UIManager>
         IntroPanel.style.display = DisplayStyle.None; // Hide the IntroPanel
     }
 
-    public void GameOver(string message)
+    public void GameOver(string message, bool playerWin)
     {
         GameOverPanel.style.opacity = 100; // Set the opacity of the GameOverPanel to 100 (fully visible)
 
         GameOverlayPanel.style.display = DisplayStyle.None; // Hide the GameOverlayPanel
         var gameOverText = GameOverPanel.Q<Label>("GameOverText"); // Find the GameOverText Label in the GameOverPanel
         gameOverText.text = message; // Set the text of the GameOverText Label to the provided message
+
+        GameOverPanel.style.backgroundImage = new StyleBackground( playerWin ? WinningScreen : LosingScreen); // Set the background image of the GameOverPanel based on playerWin
+
 
         Debug.Log("GameOver called about to display panel"); // Log the GameOver action
         GameOverPanel.style.display = DisplayStyle.Flex; // Show the GameOverPanel
